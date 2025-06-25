@@ -1,0 +1,12 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1750831829
+icon.svg::CompressedTexture2D::5782749150287024369::1750828840::1750828902::1::::<><><>0<>0<>3be6c06d8b275db9b46c56ef24328dc6<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+map.tscn::PackedScene::1861080283479752709::1750831829::0::1::::<><><>0<>0<><>::uid://0p0em202ow2g::::res://punyworld-overworld-tileset.png<>uid://durm5qahv4rhg::::res://scenes/walkertest.tscn
+punyworld-overworld-tileset.png::CompressedTexture2D::1787212498418951668::1750828840::1750828902::1::::<><><>0<>0<>042fb875f91ad090afcccb05684ffae4<>res://.godot/imported/punyworld-overworld-tileset.png-8560857a71884524ed566a92f3380ecf.ctex::
+README.md::TextFile::-1::1750828840::0::1::::<><><>0<>0<><>::
+::res://scenes/::1750831829
+bullet.tscn::PackedScene::8425366472878644162::1750831829::0::1::::<><><>0<>0<><>::uid://conhbe48wu8lx::::res://icon.svg
+walkertest.gd::GDScript::6091839528373229943::1750831633::0::1::::<>CharacterBody2D<><>0<>0<><>::
+walkertest.tscn::PackedScene::8598916364110184528::1750832200::0::1::::<><><>0<>0<><>::uid://cs16ybkcd38bb::::res://scenes/walkertest.gd<>uid://conhbe48wu8lx::::res://icon.svg
+Turret.tscn::PackedScene::1299225395347555414::1750831829::0::1::::<><><>0<>0<><>::uid://conhbe48wu8lx::::res://icon.svg
+::res://scripts/::0
