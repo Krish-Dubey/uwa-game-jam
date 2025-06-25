@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=15 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://punyworld-overworld-tileset.png" id="1_c7s6e"]
 [ext_resource type="Script" uid="uid://bigxy102n7v5g" path="res://spawn.gd" id="3_e0an3"]
 [ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/Turret.tscn" id="3_p5pve"]
 [ext_resource type="PackedScene" uid="uid://b701052xooyxc" path="res://scenes/emptyscene.tscn" id="3_urblq"]
+[ext_resource type="Script" uid="uid://d31vf07b1mlgk" path="res://home_base.gd" id="4_iw27f"]
 [ext_resource type="Script" uid="uid://c4jb2sube2y4k" path="res://turret_place.gd" id="5_urblq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c7s6e"]
@@ -725,10 +726,13 @@ scenes/1/scene = ExtResource("3_p5pve")
 scenes/1/scene = ExtResource("3_urblq")
 
 [sub_resource type="TileSet" id="TileSet_p5pve"]
-tile_size = Vector2i(64, 64)
+tile_size = Vector2i(48, 64)
 sources/2 = SubResource("TileSetScenesCollectionSource_e0an3")
 sources/3 = SubResource("TileSetScenesCollectionSource_71pa8")
 pattern_0 = SubResource("TileMapPattern_iw27f")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urblq"]
+size = Vector2(48, 47)
 
 [node name="Map" type="Node2D"]
 
@@ -748,8 +752,17 @@ tile_set = SubResource("TileSet_p5pve")
 [node name="EndPath" type="Marker2D" parent="."]
 top_level = true
 z_index = 4
-position = Vector2(1140, 185)
+position = Vector2(1145, 168)
 gizmo_extents = 20.3
+
+[node name="Area2D" type="Area2D" parent="EndPath"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("4_iw27f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndPath/Area2D"]
+position = Vector2(-17, -0.5)
+shape = SubResource("RectangleShape2D_urblq")
 
 [node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("target")]
 top_level = true
@@ -760,7 +773,6 @@ target = NodePath("../EndPath")
 
 [node name="SpawnTimer" type="Timer" parent="Spawn"]
 process_callback = 0
-wait_time = 0.05
 autostart = true
 
 [node name="TurretPlaceScript" type="Node2D" parent="." node_paths=PackedStringArray("tile_map", "road_tile_map")]
@@ -768,4 +780,5 @@ script = ExtResource("5_urblq")
 tile_map = NodePath("../tilemap/TurretTile")
 road_tile_map = NodePath("../tilemap/Road")
 
+[connection signal="body_entered" from="EndPath/Area2D" to="EndPath/Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Spawn/SpawnTimer" to="Spawn" method="_on_spawn_timer_timeout"]

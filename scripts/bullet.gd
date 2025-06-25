@@ -7,9 +7,9 @@ var direction := Vector2.RIGHT
 func _physics_process(delta):
 	position += direction.normalized() * speed * delta
 
+func _on_area_entered(area) -> void:
+	area.get_parent().health_component.take_damage(damage)
+	queue_free()
 
-
-func _on_body_entered(body):
-	if body.health_component.has_method("take_damage"):
-		body.health_component.take_damage(damage)
+func _on_timer_timeout() -> void:
 	queue_free()

@@ -1,5 +1,9 @@
 res://map.tscn
+res://scenes/walkertest.tscn
+res://home_base.gd
+res://scripts/walkertest.gd
+res://scripts/bullet.gd
 res://scenes/bullet.tscn
 res://scenes/Turret.tscn
-res://scenes/walkertest.tscn
 res://scenes/emptyscene.tscn
+res://spawn.gd
