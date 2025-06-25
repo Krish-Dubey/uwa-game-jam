@@ -8,7 +8,7 @@
 size = Vector2(15, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4brm"]
-size = Vector2(30, 30)
+size = Vector2(24.6154, 24.6154)
 
 [node name="Walkertest" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
@@ -38,6 +38,6 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="Hit Box" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.384615, -3.66798e-07)
+position = Vector2(2.75098e-07, -2.75098e-07)
 shape = SubResource("RectangleShape2D_q4brm")
 debug_color = Color(0.968513, 0, 0.46738, 0.42)
