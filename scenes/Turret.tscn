@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://qfm11nxqsf5j" path="res://scripts/turret.gd" id="1_4sggw"]
 [ext_resource type="Texture2D" uid="uid://conhbe48wu8lx" path="res://icon.svg" id="1_76wwe"]
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("projectile_spawn_position")]
+[node name="Turret" type="Node2D" node_paths=PackedStringArray("projectile_spawn_position")]
 z_index = 2
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_4sggw")
 fire_rate = 0.25
 projectile_spawn_position = NodePath("ProjectileSpawnPosition")

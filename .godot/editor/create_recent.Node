@@ -1,8 +1,9 @@
+Node2D
+Node
+TileMapLayer
 CollisionShape2D
 Marker2D
-Node
 Timer
-Node2D
 CharacterBody2D
 NavigationAgent2D
 Area2D

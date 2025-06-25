@@ -1,14 +1,7 @@
-res://scenes/walkertest.tscn
 res://map.tscn
 res://scenes/bullet.tscn
 res://scenes/Turret.tscn
-res://scenes/walkertest.gd
-res://scripts/walkertest.gd
-res://spawn.gd
-res://scenes/health_component.gd
-res://scenes/projectile_spawner.gd
-res://scenes/bullet.gd
-res://scenes/turret.gd
-res://scripts/turret.gd
+res://scenes/walkertest.tscn
 res://scripts/bullet.gd
 res://scripts/health_component.gd
+res://turret_place.gd
