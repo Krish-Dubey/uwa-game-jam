@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
+@onready var health_component : HealthComponent = $HealthComponent
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 var navigation_target = Vector2.ZERO #Initial Target
 @export var movement_speed: float = 50
+
 
 func _physics_process(delta: float) -> void:
 	navigation_agent_2d.target_position = navigation_target

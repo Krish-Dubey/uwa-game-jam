@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=7 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://punyworld-overworld-tileset.png" id="1_c7s6e"]
 [ext_resource type="Script" uid="uid://bigxy102n7v5g" path="res://spawn.gd" id="3_e0an3"]
+[ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/Turret.tscn" id="3_p5pve"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c7s6e"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -731,12 +732,17 @@ position = Vector2(1140, 185)
 gizmo_extents = 20.3
 
 [node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("target")]
+top_level = true
 position = Vector2(9, 102)
+gizmo_extents = 29.0
 script = ExtResource("3_e0an3")
 target = NodePath("../EndPath")
 
 [node name="SpawnTimer" type="Timer" parent="Spawn"]
 process_callback = 0
 autostart = true
+
+[node name="Node2D" parent="." instance=ExtResource("3_p5pve")]
+position = Vector2(96, 62)
 
 [connection signal="timeout" from="Spawn/SpawnTimer" to="Spawn" method="_on_spawn_timer_timeout"]

@@ -1,20 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://durm5qahv4rhg"]
+[gd_scene load_steps=6 format=3 uid="uid://durm5qahv4rhg"]
 
 [ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_4reu3"]
 [ext_resource type="Texture2D" uid="uid://conhbe48wu8lx" path="res://icon.svg" id="1_7x575"]
+[ext_resource type="Script" uid="uid://bhcycc38peq4c" path="res://scripts/health_component.gd" id="3_q4brm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4brm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4reu3"]
-size = Vector2(22, 24)
+size = Vector2(12, 13)
 
-[node name="Walkertest" type="CharacterBody2D"]
+[node name="Walkertest" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
+collision_layer = 3
 script = ExtResource("1_4reu3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1875, 0.1875)
 texture = ExtResource("1_7x575")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hit Box" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q4brm")
+debug_color = Color(0.968513, 0, 0.46738, 0.42)
+
+[node name="Collision Box" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4reu3")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -22,3 +31,7 @@ avoidance_enabled = true
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0, 1, 1, 1)
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("agent")]
+script = ExtResource("3_q4brm")
+agent = NodePath("..")

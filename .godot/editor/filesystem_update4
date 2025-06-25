@@ -5,3 +5,10 @@ res://scenes/Turret.tscn
 res://scenes/walkertest.gd
 res://scripts/walkertest.gd
 res://spawn.gd
+res://scenes/health_component.gd
+res://scenes/projectile_spawner.gd
+res://scenes/bullet.gd
+res://scenes/turret.gd
+res://scripts/turret.gd
+res://scripts/bullet.gd
+res://scripts/health_component.gd
