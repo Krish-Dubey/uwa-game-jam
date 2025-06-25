@@ -726,7 +726,7 @@ scenes/1/scene = ExtResource("3_p5pve")
 scenes/1/scene = ExtResource("3_urblq")
 
 [sub_resource type="TileSet" id="TileSet_p5pve"]
-tile_size = Vector2i(48, 64)
+tile_size = Vector2i(48, 48)
 sources/2 = SubResource("TileSetScenesCollectionSource_e0an3")
 sources/3 = SubResource("TileSetScenesCollectionSource_71pa8")
 pattern_0 = SubResource("TileMapPattern_iw27f")
