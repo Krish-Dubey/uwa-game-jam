@@ -1,4 +1,5 @@
 Node2D
+Area2D
 Node
 TileMapLayer
 CollisionShape2D
@@ -6,5 +7,4 @@ Marker2D
 Timer
 CharacterBody2D
 NavigationAgent2D
-Area2D
 Sprite2D

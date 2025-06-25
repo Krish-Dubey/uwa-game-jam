@@ -7,12 +7,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4brm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4reu3"]
-size = Vector2(12, 13)
+size = Vector2(10, 10)
 
 [node name="Walkertest" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
-collision_layer = 3
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_4reu3")
+movement_speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1875, 0.1875)
@@ -22,16 +24,17 @@ texture = ExtResource("1_7x575")
 shape = SubResource("RectangleShape2D_q4brm")
 debug_color = Color(0.968513, 0, 0.46738, 0.42)
 
-[node name="Collision Box" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_4reu3")
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
-debug_enabled = true
-debug_use_custom = true
+path_postprocessing = 2
+path_metadata_flags = 5
+time_horizon_agents = 3.0
 debug_path_custom_color = Color(0, 1, 1, 1)
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("agent")]
 script = ExtResource("3_q4brm")
 agent = NodePath("..")
+
+[node name="Collision Box" type="Area2D" parent="."]
+
+[node name="Collision Box" type="CollisionShape2D" parent="Collision Box"]
+shape = SubResource("RectangleShape2D_4reu3")

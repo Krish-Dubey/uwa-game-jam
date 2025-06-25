@@ -2,6 +2,4 @@ res://map.tscn
 res://scenes/bullet.tscn
 res://scenes/Turret.tscn
 res://scenes/walkertest.tscn
-res://scripts/bullet.gd
-res://scripts/health_component.gd
-res://turret_place.gd
+res://scenes/emptyscene.tscn
