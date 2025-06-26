@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bigxy102n7v5g" path="res://spawn.gd" id="3_e0an3"]
 [ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/Turret.tscn" id="3_p5pve"]
 [ext_resource type="PackedScene" uid="uid://b701052xooyxc" path="res://scenes/emptyscene.tscn" id="3_urblq"]
-[ext_resource type="Script" uid="uid://d31vf07b1mlgk" path="res://home_base.gd" id="4_iw27f"]
+[ext_resource type="Script" uid="uid://d31vf07b1mlgk" path="res://scripts/home_base.gd" id="4_iw27f"]
 [ext_resource type="Script" uid="uid://c4jb2sube2y4k" path="res://turret_place.gd" id="5_urblq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c7s6e"]
