@@ -1,1 +1,9 @@
 res://map.tscn
+res://scripts/home_base.gd
+res://scenes/walkertest.tscn
+res://scenes/bullet.tscn
+res://scenes/Turret.tscn
+res://scenes/emptyscene.tscn
+res://spawn.gd
+res://enemy_info.gd
+res://scenes/enemies/walkertest.tscn
