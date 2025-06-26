@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=16 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://punyworld-overworld-tileset.png" id="1_c7s6e"]
 [ext_resource type="Script" uid="uid://bigxy102n7v5g" path="res://spawn.gd" id="3_e0an3"]
 [ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/Turret.tscn" id="3_p5pve"]
 [ext_resource type="PackedScene" uid="uid://b701052xooyxc" path="res://scenes/emptyscene.tscn" id="3_urblq"]
+[ext_resource type="Script" uid="uid://d0tjqa2insgwf" path="res://tile_place.gd" id="4_71pa8"]
 [ext_resource type="Script" uid="uid://d31vf07b1mlgk" path="res://scripts/home_base.gd" id="4_iw27f"]
 [ext_resource type="Script" uid="uid://c4jb2sube2y4k" path="res://turret_place.gd" id="5_urblq"]
 
@@ -748,6 +749,7 @@ tile_set = SubResource("TileSet_e0an3")
 
 [node name="TurretTile" type="TileMapLayer" parent="tilemap"]
 tile_set = SubResource("TileSet_p5pve")
+script = ExtResource("4_71pa8")
 
 [node name="EndPath" type="Marker2D" parent="."]
 top_level = true
@@ -779,6 +781,18 @@ autostart = true
 script = ExtResource("5_urblq")
 tile_map = NodePath("../tilemap/TurretTile")
 road_tile_map = NodePath("../tilemap/Road")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TowerMenu" type="RichTextLabel" parent="UI"]
+offset_left = 8.0
+offset_top = 555.0
+offset_right = 122.0
+offset_bottom = 646.0
+text = "Basic Tower
+Speed - 10
+Damage - 10
+Range - 10"
 
 [connection signal="body_entered" from="EndPath/Area2D" to="EndPath/Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Spawn/SpawnTimer" to="Spawn" method="_on_spawn_timer_timeout"]
