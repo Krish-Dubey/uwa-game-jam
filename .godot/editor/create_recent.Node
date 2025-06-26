@@ -1,9 +1,10 @@
 Timer
-Marker2D
-Node2D
-CharacterBody2D
-NavigationAgent2D
-Node
 Area2D
+CharacterBody2D
 CollisionShape2D
+Node2D
+Node
+TileMapLayer
+Marker2D
+NavigationAgent2D
 Sprite2D

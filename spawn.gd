@@ -9,3 +9,4 @@ func _on_spawn_timer_timeout() -> void:
  
 	enemy.global_transform.origin = global_position
 	enemy.navigation_target = target.global_transform.origin
+	
