@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=17 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://sprite/punyworld-overworld-tileset.png" id="1_2lpho"]
 [ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/Turret.tscn" id="2_nakos"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b6c7akk0h1cy0" path="res://scenes/wall.tscn" id="3_nakos"]
 [ext_resource type="Script" uid="uid://bigxy102n7v5g" path="res://scripts/spawn.gd" id="4_be0no"]
 [ext_resource type="Script" uid="uid://c4jb2sube2y4k" path="res://scripts/buildingplace.gd" id="5_blm8a"]
+[ext_resource type="Script" uid="uid://bimc0rfprmy7v" path="res://scripts/enemy_info.gd" id="6_nakos"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c7s6e"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -1715,6 +1716,10 @@ placement_tile = NodePath("../tilemap/PlacementTile")
 [node name="SpawnTimer" type="Timer" parent="Spawn"]
 process_callback = 0
 autostart = true
+
+[node name="EnemyInfo" type="Node" parent="Spawn"]
+script = ExtResource("6_nakos")
+metadata/_custom_type_script = "uid://bimc0rfprmy7v"
 
 [node name="PlacementScript" type="Node2D" parent="." node_paths=PackedStringArray("tile_map", "road_tile_map")]
 script = ExtResource("5_blm8a")

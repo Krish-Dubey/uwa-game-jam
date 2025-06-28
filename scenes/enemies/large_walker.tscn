@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://chkg13dto4xne"]
+
+[ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_tlqob"]
+[ext_resource type="Texture2D" uid="uid://conhbe48wu8lx" path="res://sprite/icon.svg" id="2_24cst"]
+[ext_resource type="Script" uid="uid://bhcycc38peq4c" path="res://scripts/health_component.gd" id="3_34tvn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tlqob"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4brm"]
+size = Vector2(24.6154, 24.6154)
+
+[node name="LargeWalker" type="CharacterBody2D" groups=["enemy"]]
+z_index = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_tlqob")
+movement_speed = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("2_24cst")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 2
+path_metadata_flags = 5
+time_horizon_agents = 3.0
+debug_path_custom_color = Color(0, 1, 1, 1)
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("agent")]
+script = ExtResource("3_34tvn")
+agent = NodePath("..")
+
+[node name="Collision Box" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tlqob")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Hit Box" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.75098e-07, -2.75098e-07)
+shape = SubResource("RectangleShape2D_q4brm")
+debug_color = Color(0.968513, 0, 0.46738, 0.42)

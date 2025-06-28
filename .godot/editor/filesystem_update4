@@ -5,8 +5,10 @@ res://scenes/walkertest.tscn
 res://scenes/emptyscene.tscn
 res://scenes/highlight_marker.tscn
 res://scenes/wrecker.tscn
-res://scripts/spawn.gd
-res://scripts/blockade_place_script.gd
-res://scripts/turret_place.gd
 res://scenes/wall.tscn
-res://scripts/walkertest.gd
+res://scripts/enemy_info.gd
+res://scripts/spawn.gd
+res://scripts/home_base.gd
+res://scenes/enemies/large_walker.tscn
+res://scenes/enemies/fastwalker.tscn
+res://scenes/enemies/walkertest.tscn

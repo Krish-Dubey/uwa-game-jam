@@ -1,10 +1,15 @@
 extends Marker2D
 
-var enemy_scene = preload("res://scenes/walkertest.tscn")
+@onready var EnemyInfo = $EnemyInfo
+@onready var SpawnTimer = $SpawnTimer
 @export var target : Node2D
 @export var road_tile_map_ : TileMapLayer
 @export var placement_tile: TileMapLayer
-
+var currentWave = 0
+var currentBasePoints = 3
+var enemy_list = []
+var common_enemy_list = []
+var enemy_wave = []
 
 var astar_grid: AStarGrid2D
 var id_path
@@ -17,7 +22,9 @@ func _ready() -> void:
 	astar_grid.Heuristic.HEURISTIC_EUCLIDEAN
 	astar_grid.update()
 	update_astar_path()
-	
+	enemy_list = EnemyInfo.loadAllEnemies()
+	create_wave()
+	SpawnTimer.start()
 
 func update_astar_path():
 	id_path = astar_grid.get_id_path(
@@ -42,15 +49,27 @@ func update_astar_path():
 		astar_grid.set_point_solid(coordinates[coordinate])
 				
 	
-
-func _on_spawn_timer_timeout() -> void:
+func spawn_enemy(enemy_packed_scene) -> void:
 	update_astar_path()
-	var enemy = enemy_scene.instantiate()
-	add_child(enemy)
-	enemy.path = id_path
-	enemy.global_transform.origin = global_position
-	enemy.navigation_target = target.global_transform.origin
-	enemy.road_tile = road_tile_map_
+	var spawned_enemy = enemy_packed_scene.instantiate()
+	add_child(spawned_enemy)
+	spawned_enemy.path = id_path
+	spawned_enemy.global_transform.origin = global_position
+	spawned_enemy.navigation_target = target.global_transform.origin
+	spawned_enemy.road_tile = road_tile_map_
 	
-
+func _on_spawn_timer_timeout() -> void:
+	if enemy_wave != []:
+		spawn_enemy(enemy_wave[-1])
+		enemy_wave.remove_at(enemy_wave.size()-1)
+	else:
+		SpawnTimer.stop()
 	
+func create_wave():
+	currentWave += 1
+	var currentPoint = currentBasePoints + currentWave
+	
+	var common_list = EnemyInfo.getCategory("common")
+	while currentPoint > 0:
+		enemy_wave.append(EnemyInfo.LoadedEnemies[common_list[0]])
+		currentPoint -= 1

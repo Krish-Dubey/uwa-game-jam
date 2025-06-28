@@ -1,23 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://durm5qahv4rhg"]
+[gd_scene load_steps=6 format=3 uid="uid://dqr76mxmntcp2"]
 
-[ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_4reu3"]
-[ext_resource type="Texture2D" uid="uid://conhbe48wu8lx" path="res://sprite/icon.svg" id="1_7x575"]
-[ext_resource type="Script" uid="uid://bhcycc38peq4c" path="res://scripts/health_component.gd" id="3_q4brm"]
+[ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_80eva"]
+[ext_resource type="Texture2D" uid="uid://conhbe48wu8lx" path="res://sprite/icon.svg" id="2_7xnej"]
+[ext_resource type="Script" uid="uid://bhcycc38peq4c" path="res://scripts/health_component.gd" id="3_hnbjv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q4brm"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_80eva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4brm"]
 size = Vector2(24.6154, 24.6154)
 
-[node name="Walkertest" type="CharacterBody2D" groups=["enemy"]]
+[node name="fastWalker" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
-scale = Vector2(1.3, 1.3)
-script = ExtResource("1_4reu3")
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_80eva")
 movement_speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1875, 0.1875)
-texture = ExtResource("1_7x575")
+texture = ExtResource("2_7xnej")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 2
@@ -26,11 +26,11 @@ time_horizon_agents = 3.0
 debug_path_custom_color = Color(0, 1, 1, 1)
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("agent")]
-script = ExtResource("3_q4brm")
+script = ExtResource("3_hnbjv")
 agent = NodePath("..")
 
 [node name="Collision Box" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_q4brm")
+shape = SubResource("CircleShape2D_80eva")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
