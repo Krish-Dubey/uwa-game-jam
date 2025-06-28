@@ -1,9 +1,4 @@
-res://map.tscn
-res://enemy_info.gd
-res://scenes/bullet.tscn
-res://scenes/Turret.tscn
-res://scenes/enemies/walkertest.tscn
-res://scenes/emptyscene.tscn
-res://spawn.gd
-res://scenes/enemies/Faster.tscn
 res://scenes/enemies/fastwalker.tscn
+res://enemy_info.gd
+res://scenes/enemies/large_walker.tscn
+res://scenes/enemies/walkertest.tscn
