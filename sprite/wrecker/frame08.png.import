@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0p0em202ow2g"
-path="res://.godot/imported/punyworld-overworld-tileset.png-8560857a71884524ed566a92f3380ecf.ctex"
+uid="uid://b8d2pokcivrj3"
+path="res://.godot/imported/frame08.png-7597a18ebcfb771dc40f1ff3eda3f650.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://punyworld-overworld-tileset.png"
-dest_files=["res://.godot/imported/punyworld-overworld-tileset.png-8560857a71884524ed566a92f3380ecf.ctex"]
+source_file="res://sprite/wrecker/frame08.png"
+dest_files=["res://.godot/imported/frame08.png-7597a18ebcfb771dc40f1ff3eda3f650.ctex"]
 
 [params]
 

@@ -1,11 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://durm5qahv4rhg"]
 
 [ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_4reu3"]
-[ext_resource type="Texture2D" uid="uid://conhbe48wu8lx" path="res://icon.svg" id="1_7x575"]
+[ext_resource type="Texture2D" uid="uid://conhbe48wu8lx" path="res://sprite/icon.svg" id="1_7x575"]
 [ext_resource type="Script" uid="uid://bhcycc38peq4c" path="res://scripts/health_component.gd" id="3_q4brm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4reu3"]
-size = Vector2(15, 15)
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4brm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4brm"]
 size = Vector2(24.6154, 24.6154)
@@ -31,7 +30,7 @@ script = ExtResource("3_q4brm")
 agent = NodePath("..")
 
 [node name="Collision Box" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4reu3")
+shape = SubResource("CircleShape2D_q4brm")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

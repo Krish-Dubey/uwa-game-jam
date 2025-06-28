@@ -1,1 +1,12 @@
-res://map.tscn
+res://scenes/map.tscn
+res://scenes/bullet.tscn
+res://scenes/Turret.tscn
+res://scenes/walkertest.tscn
+res://scenes/emptyscene.tscn
+res://scenes/highlight_marker.tscn
+res://scenes/wrecker.tscn
+res://scripts/spawn.gd
+res://scripts/blockade_place_script.gd
+res://scripts/turret_place.gd
+res://scenes/wall.tscn
+res://scripts/walkertest.gd

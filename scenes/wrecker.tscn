@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://btbg2m4lb48oo"]
+
+[ext_resource type="Texture2D" uid="uid://cr5gy5xy2fk0q" path="res://sprite/wrecker/frame00.png" id="1_w0wll"]
+[ext_resource type="Texture2D" uid="uid://b5iwidtpaeyvl" path="res://sprite/wrecker/frame01.png" id="2_4ybt1"]
+[ext_resource type="Texture2D" uid="uid://dce3o5i5xtd3g" path="res://sprite/wrecker/frame02.png" id="3_1xer5"]
+[ext_resource type="Texture2D" uid="uid://qxalaxj10r8d" path="res://sprite/wrecker/frame03.png" id="4_gshel"]
+[ext_resource type="Texture2D" uid="uid://lfe4ppc5fidq" path="res://sprite/wrecker/frame04.png" id="5_1e5ep"]
+[ext_resource type="Texture2D" uid="uid://nmv4pnm1uow6" path="res://sprite/wrecker/frame05.png" id="6_nj2xq"]
+[ext_resource type="Texture2D" uid="uid://wgmwh0jwyoob" path="res://sprite/wrecker/frame06.png" id="7_bbwxn"]
+[ext_resource type="Texture2D" uid="uid://d0yfbg2a51jvp" path="res://sprite/wrecker/frame07.png" id="8_o5nqo"]
+[ext_resource type="Texture2D" uid="uid://b8d2pokcivrj3" path="res://sprite/wrecker/frame08.png" id="9_q0rgd"]
+[ext_resource type="Texture2D" uid="uid://b7pmw6if5ytmq" path="res://sprite/wrecker/frame09.png" id="10_olgcu"]
+[ext_resource type="Texture2D" uid="uid://d175y6s20hsu5" path="res://sprite/wrecker/frame10.png" id="11_3c0bk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c28ae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w0wll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4ybt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1xer5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gshel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1e5ep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nj2xq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bbwxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o5nqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_q0rgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_olgcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3c0bk")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[node name="Wrecker" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c28ae")
+animation = &"new_animation"
+frame_progress = 0.0222403

@@ -1,0 +1,56 @@
+extends Marker2D
+
+var enemy_scene = preload("res://scenes/walkertest.tscn")
+@export var target : Node2D
+@export var road_tile_map_ : TileMapLayer
+@export var placement_tile: TileMapLayer
+
+
+var astar_grid: AStarGrid2D
+var id_path
+
+func _ready() -> void:
+	astar_grid = AStarGrid2D.new()
+	astar_grid.region = road_tile_map_.get_used_rect()
+	astar_grid.cell_size = Vector2(16, 16)
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
+	astar_grid.Heuristic.HEURISTIC_EUCLIDEAN
+	astar_grid.update()
+	update_astar_path()
+	
+
+func update_astar_path():
+	id_path = astar_grid.get_id_path(
+		road_tile_map_.local_to_map(global_position),
+		road_tile_map_.local_to_map(target.global_position)
+	).slice(1)
+	
+	for x in road_tile_map_.get_used_rect().size.x:
+		for y in road_tile_map_.get_used_rect().size.y:
+			var tile_position = Vector2i(
+				x + road_tile_map_.get_used_rect().position.x,
+				y + road_tile_map_.get_used_rect().position.y
+				)
+			var tile_data = road_tile_map_.get_cell_tile_data(tile_position)
+			
+			if tile_data == null or tile_data.get_custom_data("unwalkable"):
+				astar_grid.set_point_solid(tile_position)
+				
+	var coordinates_ = placement_tile.get_used_cells()
+	for coordinate in coordinates_.size():
+		var coordinates = placement_tile.get_used_cells()
+		astar_grid.set_point_solid(coordinates[coordinate])
+				
+	
+
+func _on_spawn_timer_timeout() -> void:
+	update_astar_path()
+	var enemy = enemy_scene.instantiate()
+	add_child(enemy)
+	enemy.path = id_path
+	enemy.global_transform.origin = global_position
+	enemy.navigation_target = target.global_transform.origin
+	enemy.road_tile = road_tile_map_
+	
+
+	
