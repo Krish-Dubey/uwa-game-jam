@@ -774,7 +774,6 @@ target = NodePath("../EndPath")
 
 [node name="SpawnTimer" type="Timer" parent="Spawn"]
 process_callback = 0
-autostart = true
 
 [node name="EnemyInfo" type="Node" parent="Spawn"]
 script = ExtResource("6_71pa8")

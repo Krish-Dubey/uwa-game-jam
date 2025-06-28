@@ -4,15 +4,27 @@ class_name EnemyInfo
 var EnemiesList = [
 	{
 		"enemyName": "Walker",
-		"resourcePath": "res://scenes/enemies/walkertest.tscn"
+		"resourcePath": "res://scenes/enemies/walkertest.tscn",
+		"cost" : 1,
+		"rarity" : "common"
 	}
 ]
 
-func getAllEnemyInfo():
-	var LoadedEnemies = []
+var LoadedEnemies = []
+
+var EnemiesCategoryIndex = {
+	"common" = []
+}
+
+func loadAllEnemies():
 	for enemy in EnemiesList:
-		LoadedEnemies.append({
-			"LoadedRes" : load(enemy["resourcePath"]),
-			"EnemyName" : enemy["enemyName"]
-		})
-	return LoadedEnemies
+		enemy["loadIndex"] = LoadedEnemies.size()
+		LoadedEnemies.append(load(enemy["resourcePath"]))
+		EnemiesCategoryIndex[enemy["rarity"]].append(enemy["loadIndex"])
+	return EnemiesList
+	
+func getEnemiesPackedNode(index):
+	return LoadedEnemies[index]
+
+func getCategory(category):
+	return EnemiesCategoryIndex[category]
