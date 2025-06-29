@@ -1,11 +1,13 @@
 extends Marker2D
 
-@onready var EnemyInfo = $EnemyInfo
-@onready var SpawnTimer = $SpawnTimer
+@export var EnemyInfo = Node
+@export var SpawnTimer = Node
+@export var PlayerEconomy: Node 
 @export var target : Node2D
 @export var road_tile_map_ : TileMapLayer
 @export var placement_tile: TileMapLayer
 @export var wave_label : Label
+signal new_wave
 
 var currentWave = 0
 var currentBasePoints = 3
@@ -47,7 +49,6 @@ func update_astar_path():
 	for coordinate in coordinates_.size():
 		var coordinates = placement_tile.get_used_cells()
 		astar_grid.set_point_solid(coordinates[coordinate])
-				
 	
 func spawn_enemy(enemy_packed_scene) -> void:
 	update_astar_path()
@@ -75,3 +76,4 @@ func create_wave():
 	while currentPoint > 0:
 		enemy_wave.append(EnemyInfo.LoadedEnemies[common_list[0]])
 		currentPoint -= 1
+	new_wave.emit()

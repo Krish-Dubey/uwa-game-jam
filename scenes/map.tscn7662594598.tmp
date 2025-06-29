@@ -1755,14 +1755,11 @@ shape = SubResource("RectangleShape2D_urblq")
 [node name="PlayerEconomy" type="Node" parent="PlayerNode"]
 script = ExtResource("9_mo32q")
 
-[node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("EnemyInfo", "SpawnTimer", "PlayerEconomy", "target", "road_tile_map_", "placement_tile", "wave_label")]
+[node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("target", "road_tile_map_", "placement_tile", "wave_label")]
 top_level = true
 position = Vector2(-23, 120)
 gizmo_extents = 29.0
 script = ExtResource("4_be0no")
-EnemyInfo = NodePath("EnemyInfo")
-SpawnTimer = NodePath("SpawnTimer")
-PlayerEconomy = NodePath("../PlayerNode/PlayerEconomy")
 target = NodePath("../PlayerNode/EndPath")
 road_tile_map_ = NodePath("../tilemap/Road")
 placement_tile = NodePath("../tilemap/PlacementTile")
@@ -1776,11 +1773,10 @@ autostart = true
 script = ExtResource("6_nakos")
 metadata/_custom_type_script = "uid://bimc0rfprmy7v"
 
-[node name="PlacementScript" type="Node2D" parent="." node_paths=PackedStringArray("tile_map", "road_tile_map", "PlayerEconomy")]
+[node name="PlacementScript" type="Node2D" parent="." node_paths=PackedStringArray("tile_map", "road_tile_map")]
 script = ExtResource("5_blm8a")
 tile_map = NodePath("../tilemap/PlacementTile")
 road_tile_map = NodePath("../tilemap/Road")
-PlayerEconomy = NodePath("../PlayerNode/PlayerEconomy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 286)

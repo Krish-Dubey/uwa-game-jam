@@ -23,8 +23,6 @@ func _physics_process(delta: float) -> void:
 				shot = true
 				shoot()
 				time_since_last_shot = 0.0
-	
-	
 
 func get_closest_enemy_in_range(range: float) -> Node2D:
 	var closest_enemy
