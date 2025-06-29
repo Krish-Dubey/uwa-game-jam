@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://kekudgb61vu8"]
+
+[ext_resource type="Script" uid="uid://dv3p6fjk7w5sa" path="res://scenes/ui_building_button.gd" id="1_3h6d8"]
+[ext_resource type="Texture2D" uid="uid://2nga6qau1ih8" path="res://sprite/platform.png" id="1_7ur5p"]
+[ext_resource type="Texture2D" uid="uid://clsxs8e3anusb" path="res://sprite/crossbow/tile000.png" id="2_3h6d8"]
+[ext_resource type="Texture2D" uid="uid://bs2lm3i23waok" path="res://sprite/crossbow/tile001.png" id="3_bbc0t"]
+[ext_resource type="Texture2D" uid="uid://ciwak8xoh4u04" path="res://sprite/crossbow/tile002.png" id="4_y1s7p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l77uo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3h6d8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bbc0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y1s7p")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="ui_crossbow" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_3h6d8")
+tile_id = 3
+
+[node name="Container" type="Node2D" parent="."]
+position = Vector2(7, 7)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Container"]
+position = Vector2(29.025, 34.32)
+scale = Vector2(1, 1.2)
+texture = ExtResource("1_7ur5p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container"]
+z_index = 1
+position = Vector2(30, 28.75)
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_l77uo")
+frame = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

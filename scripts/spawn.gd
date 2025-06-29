@@ -5,6 +5,8 @@ extends Marker2D
 @export var target : Node2D
 @export var road_tile_map_ : TileMapLayer
 @export var placement_tile: TileMapLayer
+@export var wave_label : Label
+
 var currentWave = 0
 var currentBasePoints = 3
 var enemy_list = []
@@ -23,8 +25,6 @@ func _ready() -> void:
 	astar_grid.update()
 	update_astar_path()
 	enemy_list = EnemyInfo.loadAllEnemies()
-	create_wave()
-	SpawnTimer.start()
 
 func update_astar_path():
 	id_path = astar_grid.get_id_path(
@@ -66,9 +66,11 @@ func _on_spawn_timer_timeout() -> void:
 		SpawnTimer.stop()
 	
 func create_wave():
+	update_astar_path()
+	SpawnTimer.start()
 	currentWave += 1
 	var currentPoint = currentBasePoints + currentWave
-	
+	wave_label.text = "Waves : " + str(currentWave)
 	var common_list = EnemyInfo.getCategory("common")
 	while currentPoint > 0:
 		enemy_wave.append(EnemyInfo.LoadedEnemies[common_list[0]])

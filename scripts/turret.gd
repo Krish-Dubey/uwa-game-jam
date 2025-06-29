@@ -1,10 +1,12 @@
 extends Node2D
 
-@export var turret_range: float = 100
+@export var turret_range: float = 200
 @export var fire_rate: float = 1
 
-@export var bullet_scene = preload("res://scenes/bullet.tscn")
+@export var bullet_scene : PackedScene
 @export var projectile_spawn_position: Node2D
+
+var shot: bool = false
 
 var time_since_last_shot := 0.0
 
@@ -18,7 +20,7 @@ func _physics_process(delta: float) -> void:
 			
 			look_at(closest_enemy.global_position)
 			if time_since_last_shot >= fire_rate:
-				
+				shot = true
 				shoot()
 				time_since_last_shot = 0.0
 	
@@ -42,6 +44,7 @@ func get_closest_enemy_in_range(range: float) -> Node2D:
 
 func shoot():
 	var bullet = bullet_scene.instantiate()
-	bullet.position = projectile_spawn_position.global_position
+	bullet.global_position = projectile_spawn_position.global_position
 	bullet.global_rotation = global_rotation
 	get_tree().current_scene.add_child(bullet)
+	shot = false

@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://ys8v2binagg6"]
+
+[ext_resource type="Script" uid="uid://qfm11nxqsf5j" path="res://scripts/turret.gd" id="1_c5x4l"]
+[ext_resource type="Texture2D" uid="uid://clsxs8e3anusb" path="res://sprite/crossbow/tile000.png" id="1_ym1yd"]
+[ext_resource type="PackedScene" uid="uid://c1210oo2vnh5j" path="res://scenes/arrow.tscn" id="2_10c8u"]
+[ext_resource type="Texture2D" uid="uid://bs2lm3i23waok" path="res://sprite/crossbow/tile001.png" id="2_c5x4l"]
+[ext_resource type="Texture2D" uid="uid://ciwak8xoh4u04" path="res://sprite/crossbow/tile002.png" id="3_qpyub"]
+[ext_resource type="Texture2D" uid="uid://2nga6qau1ih8" path="res://sprite/platform.png" id="5_qpyub"]
+[ext_resource type="Script" uid="uid://bj1bmofehns5n" path="res://scenes/animted_turret.gd" id="5_v2plf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2plf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ym1yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c5x4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qpyub")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="crossbow" type="Node2D"]
+
+[node name="turret" type="Node2D" parent="." node_paths=PackedStringArray("projectile_spawn_position")]
+position = Vector2(0, -9.32)
+script = ExtResource("1_c5x4l")
+bullet_scene = ExtResource("2_10c8u")
+projectile_spawn_position = NodePath("ProjectileSpawnPosition")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="turret" node_paths=PackedStringArray("turret")]
+z_index = 1
+position = Vector2(-1, 0)
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_v2plf")
+frame = 2
+frame_progress = 0.769841
+script = ExtResource("5_v2plf")
+turret = NodePath("..")
+
+[node name="ProjectileSpawnPosition" type="Marker2D" parent="turret"]
+position = Vector2(12.245, -0.74)
+gizmo_extents = 208.2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3.75)
+scale = Vector2(1, 1.2)
+texture = ExtResource("5_qpyub")

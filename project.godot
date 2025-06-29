@@ -15,6 +15,11 @@ run/main_scene="uid://1rryq0dileo8"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://sprite/icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [global_group]
 
 enemy=""

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2gfat4iqh5xk"]
+
+[ext_resource type="Script" uid="uid://dv3p6fjk7w5sa" path="res://scenes/ui_building_button.gd" id="1_01qww"]
+[ext_resource type="Texture2D" uid="uid://drxskrgobsnhh" path="res://sprite/wall.png" id="2_xxvt8"]
+
+[node name="ui_wall" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_01qww")
+tile_id = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("2_xxvt8")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

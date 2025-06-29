@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwn1t5yvfamu7"]
-
-[ext_resource type="Texture2D" uid="uid://2qi3cx4fdwua" path="res://sprite/blue.png" id="1_vu81b"]
-
-[node name="highlight_marker" type="Node2D"]
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_vu81b")
