@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=17 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://punyworld-overworld-tileset.png" id="1_c7s6e"]
 [ext_resource type="Script" uid="uid://bigxy102n7v5g" path="res://spawn.gd" id="3_e0an3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d0tjqa2insgwf" path="res://tile_place.gd" id="4_71pa8"]
 [ext_resource type="Script" uid="uid://d31vf07b1mlgk" path="res://scripts/home_base.gd" id="4_iw27f"]
 [ext_resource type="Script" uid="uid://c4jb2sube2y4k" path="res://turret_place.gd" id="5_urblq"]
+[ext_resource type="PackedScene" uid="uid://boh7208d8e6f5" path="res://game_ui.tscn" id="8_05x41"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c7s6e"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -793,6 +794,9 @@ text = "Basic Tower
 Speed - 10
 Damage - 10
 Range - 10"
+
+[node name="Control" parent="UI" instance=ExtResource("8_05x41")]
+offset_bottom = 656.0
 
 [connection signal="body_entered" from="EndPath/Area2D" to="EndPath/Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Spawn/SpawnTimer" to="Spawn" method="_on_spawn_timer_timeout"]

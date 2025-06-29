@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://boh7208d8e6f5"]
+
+[ext_resource type="Script" uid="uid://cgjwb64fedr2r" path="res://game_ui.gd" id="1_ue6oa"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_ue6oa")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.722
+anchor_top = 0.065
+anchor_right = 0.997
+anchor_bottom = 0.929
+offset_left = 0.255859
+offset_top = -0.120003
+offset_right = 0.456055
+offset_bottom = 0.00799561
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="QuotaLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 376.0
+offset_top = 21.0
+offset_right = 502.0
+offset_bottom = 44.0
+text = "Company Quota"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 2
+offset_left = 539.0
+offset_top = 19.0
+offset_right = 738.0
+offset_bottom = 46.0
+value = 20.0
+
+[node name="PollutionAndCurrency" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 5.0
+offset_bottom = 178.0
+
+[node name="CurrencyLabel" type="Label" parent="PollutionAndCurrency"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="PollutionLabel" type="Label" parent="PollutionAndCurrency"]
+layout_mode = 2

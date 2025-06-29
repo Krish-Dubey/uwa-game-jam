@@ -1,0 +1,6 @@
+res://map.tscn
+res://scenes/bullet.tscn
+res://scenes/Turret.tscn
+res://scenes/walkertest.tscn
+res://scenes/emptyscene.tscn
+res://game_ui.tscn

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ijv5scef867g"
-path="res://.godot/imported/gattling.png-7d6ca6b621f31509d330aa8a5b1c17d1.ctex"
+uid="uid://dw4npwet6tsy3"
+path="res://.godot/imported/gattling-gun.png-71d93cd397e0564879354f6a03b86abe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gattling.png"
-dest_files=["res://.godot/imported/gattling.png-7d6ca6b621f31509d330aa8a5b1c17d1.ctex"]
+source_file="res://assets/gattling-gun.png"
+dest_files=["res://.godot/imported/gattling-gun.png-71d93cd397e0564879354f6a03b86abe.ctex"]
 
 [params]
 
