@@ -9,9 +9,15 @@ offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("1_01qww")
 tile_id = 2
+building_name = "Wall"
+building_hp = 500
+building_tooltip = "A Sturdy Wall"
+building_cost = "25"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(32, 32)
 texture = ExtResource("2_xxvt8")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

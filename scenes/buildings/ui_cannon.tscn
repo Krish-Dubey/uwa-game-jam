@@ -11,6 +11,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_c64xb")
 tile_id = 4
+building_name = "Cannon"
+building_hp = 100
+building_dmg = 10
+building_tooltip = "Deal Splash Damage"
+building_cost = "100"
 
 [node name="Turret" type="Node2D" parent="."]
 position = Vector2(32.645, 25.095)
@@ -33,4 +38,6 @@ position = Vector2(0, 28.74)
 scale = Vector2(4, 4.8)
 texture = ExtResource("3_lln18")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

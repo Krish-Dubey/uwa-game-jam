@@ -16,3 +16,11 @@ res://scenes/buildings/sniper.tscn
 res://scenes/buildings/ui_sniper.tscn
 res://scenes/buildings/factory.tscn
 res://scenes/buildings/ui_factory.tscn
+res://scenes/building_info_ui.gd
+res://scenes/buildings/ui_crossbow.tscn
+res://scenes/buildings/ui_gatling_gun.tscn
+res://scenes/buildings/ui_wall.tscn
+res://scenes/buildings/ui_pollution_filter.tscn
+res://scenes/buildings/ui_solar_panel.tscn
+res://scenes/buildings/solar_panel.tscn
+res://scenes/buildings/pollution_filter.tscn

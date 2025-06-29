@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6num1hrus3"]
+
+[ext_resource type="Texture2D" uid="uid://bqj7k1cp6j4cv" path="res://sprite/pollution-filter-w-funnel/tile000.png" id="1_cdflo"]
+[ext_resource type="Texture2D" uid="uid://dan1hhpgsycj4" path="res://sprite/pollution-filter-w-funnel/tile001.png" id="2_mscor"]
+[ext_resource type="Texture2D" uid="uid://ce44ha3eo3ex8" path="res://sprite/pollution-filter-w-funnel/tile002.png" id="3_n2h1d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5fwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cdflo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mscor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n2h1d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Pollution Filter" type="Node2D"]
+y_sort_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.062, 0.062)
+sprite_frames = SubResource("SpriteFrames_a5fwa")
+autoplay = "default"
+frame_progress = 0.512559

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d16vdrilnng6j"]
+
+[ext_resource type="Texture2D" uid="uid://cm0mh5tqs3a4r" path="res://sprite/solar_panel.png" id="1_7o06k"]
+[ext_resource type="Script" uid="uid://dv3p6fjk7w5sa" path="res://scripts/ui_building_button.gd" id="1_i00f4"]
+
+[node name="ui_solar_panel" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_i00f4")
+tile_id = 8
+building_name = "Solar Panel"
+building_hp = 25
+building_tooltip = "Generates Energy"
+building_cost = 75
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 30)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_7o06k")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

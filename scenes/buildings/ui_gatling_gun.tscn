@@ -11,6 +11,11 @@ offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("1_ewj62")
 tile_id = 1
+building_name = "Gatling Gun"
+building_hp = 100
+building_dmg = 10
+building_tooltip = "Fast Shooting Turret"
+building_cost = "100"
 
 [node name="Container" type="Node2D" parent="."]
 position = Vector2(4, 7)
@@ -32,4 +37,6 @@ rotation = 1.5708
 scale = Vector2(0.0375, 0.0375)
 texture = ExtResource("3_x8244")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

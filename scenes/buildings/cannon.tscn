@@ -9,6 +9,7 @@
 [node name="cannon" type="Node2D"]
 
 [node name="Turret" type="Node2D" parent="." node_paths=PackedStringArray("projectile_spawn_position")]
+y_sort_enabled = true
 position = Vector2(0, -10.935)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_0285d")
@@ -32,11 +33,13 @@ scale = Vector2(3.16667, 11.2)
 texture = ExtResource("4_5saov")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -3.75)
 scale = Vector2(1, 1.2)
 texture = ExtResource("5_uvlre")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, 27.65)
 scale = Vector2(0.916667, 0.1)
 texture = ExtResource("4_5saov")

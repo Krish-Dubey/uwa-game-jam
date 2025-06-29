@@ -1,12 +1,12 @@
+Button
+Panel
+Sprite2D
+AnimatedSprite2D
 PanelContainer
 Label
 HBoxContainer
 VBoxContainer
-Button
-Sprite2D
-AnimatedSprite2D
 MarginContainer
-Panel
 RayCast2D
 VScrollBar
 Control

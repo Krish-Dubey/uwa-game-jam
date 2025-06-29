@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu0eksit6w4yt"]
+
+[ext_resource type="Script" uid="uid://dv3p6fjk7w5sa" path="res://scripts/ui_building_button.gd" id="1_7phsk"]
+[ext_resource type="Texture2D" uid="uid://bqj7k1cp6j4cv" path="res://sprite/pollution-filter-w-funnel/tile000.png" id="1_aawgw"]
+[ext_resource type="Texture2D" uid="uid://dan1hhpgsycj4" path="res://sprite/pollution-filter-w-funnel/tile001.png" id="2_7phsk"]
+[ext_resource type="Texture2D" uid="uid://ce44ha3eo3ex8" path="res://sprite/pollution-filter-w-funnel/tile002.png" id="3_rqnfv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgjvg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aawgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7phsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rqnfv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ui_pollution_filter" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7phsk")
+tile_id = 7
+building_name = "Pollution Filter"
+building_hp = 25
+building_tooltip = "Filters Pollution"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(31, 37)
+scale = Vector2(0.051, 0.051)
+sprite_frames = SubResource("SpriteFrames_hgjvg")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

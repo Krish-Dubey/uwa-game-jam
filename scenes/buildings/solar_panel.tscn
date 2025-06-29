@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxj0s3q4c3wj3"]
+
+[ext_resource type="Texture2D" uid="uid://cm0mh5tqs3a4r" path="res://sprite/solar_panel.png" id="1_a33p7"]
+
+[node name="solar_panel" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_a33p7")
