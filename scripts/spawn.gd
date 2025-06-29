@@ -3,10 +3,14 @@ extends Marker2D
 @export var EnemyInfo = Node
 @export var SpawnTimer = Node
 @export var PlayerEconomy: Node 
+@export var EnemyContainer: Node
 @export var target : Node2D
 @export var road_tile_map_ : TileMapLayer
 @export var placement_tile: TileMapLayer
 @export var wave_label : Label
+@export var next_wave_button : Button
+@export var buldings_button : Array[Button]
+@export var placement_script : Node
 signal new_wave
 
 var currentWave = 0
@@ -53,7 +57,7 @@ func update_astar_path():
 func spawn_enemy(enemy_packed_scene) -> void:
 	update_astar_path()
 	var spawned_enemy = enemy_packed_scene.instantiate()
-	add_child(spawned_enemy)
+	EnemyContainer.add_child(spawned_enemy)
 	spawned_enemy.path = id_path
 	spawned_enemy.global_transform.origin = global_position
 	spawned_enemy.navigation_target = target.global_transform.origin
@@ -77,3 +81,12 @@ func create_wave():
 		enemy_wave.append(EnemyInfo.LoadedEnemies[common_list[0]])
 		currentPoint -= 1
 	new_wave.emit()
+	next_wave_button.disabled = true
+	for buttons in buldings_button:
+		buttons.disabled = true
+	placement_script.build_mode = false
+
+func _on_enemy_container_wave_end() -> void:
+	next_wave_button.disabled = false
+	for buttons in buldings_button:
+		buttons.disabled = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=39 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://sprite/punyworld-overworld-tileset.png" id="1_2lpho"]
 [ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/buildings/gatling_gun.tscn" id="2_nakos"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c2gfat4iqh5xk" path="res://scenes/buildings/ui_wall.tscn" id="9_mlgqr"]
 [ext_resource type="Script" uid="uid://47hdxw02w2yf" path="res://scenes/economy.gd" id="9_mo32q"]
 [ext_resource type="PackedScene" uid="uid://bvap245prb28r" path="res://scenes/buildings/ui_gatling_gun.tscn" id="10_mlgqr"]
+[ext_resource type="Script" uid="uid://pyre2w6xvvwv" path="res://scenes/enemy_container.gd" id="12_6k6j1"]
 [ext_resource type="PackedScene" uid="uid://bahpg4a8ojpee" path="res://scenes/buildings/ui_cannon.tscn" id="13_gw3fx"]
 [ext_resource type="PackedScene" uid="uid://cvrxj85vd67oc" path="res://scenes/buildings/ui_sniper.tscn" id="15_p7tei"]
 [ext_resource type="PackedScene" uid="uid://cqjuu8yn6hh26" path="res://scenes/buildings/ui_factory.tscn" id="17_mo32q"]
@@ -1755,7 +1756,7 @@ shape = SubResource("RectangleShape2D_urblq")
 [node name="PlayerEconomy" type="Node" parent="PlayerNode"]
 script = ExtResource("9_mo32q")
 
-[node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("EnemyInfo", "SpawnTimer", "PlayerEconomy", "target", "road_tile_map_", "placement_tile", "wave_label")]
+[node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("EnemyInfo", "SpawnTimer", "PlayerEconomy", "EnemyContainer", "target", "road_tile_map_", "placement_tile", "wave_label", "next_wave_button", "buldings_button", "placement_script")]
 top_level = true
 position = Vector2(-23, 120)
 gizmo_extents = 29.0
@@ -1763,10 +1764,14 @@ script = ExtResource("4_be0no")
 EnemyInfo = NodePath("EnemyInfo")
 SpawnTimer = NodePath("SpawnTimer")
 PlayerEconomy = NodePath("../PlayerNode/PlayerEconomy")
+EnemyContainer = NodePath("EnemyContainer")
 target = NodePath("../PlayerNode/EndPath")
 road_tile_map_ = NodePath("../tilemap/Road")
 placement_tile = NodePath("../tilemap/PlacementTile")
 wave_label = NodePath("../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2/Label")
+next_wave_button = NodePath("../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2/Button")
+buldings_button = [NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui/AspectRatioContainer/ui_wall"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui2/AspectRatioContainer/ui_gatling_gun"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui3/AspectRatioContainer/ui_crossbow"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui4/AspectRatioContainer/ui_cannon"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui5/AspectRatioContainer/ui_sniper"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui/AspectRatioContainer/ui_factory")]
+placement_script = NodePath("../PlacementScript")
 
 [node name="SpawnTimer" type="Timer" parent="Spawn"]
 process_callback = 0
@@ -1775,6 +1780,9 @@ autostart = true
 [node name="EnemyInfo" type="Node" parent="Spawn"]
 script = ExtResource("6_nakos")
 metadata/_custom_type_script = "uid://bimc0rfprmy7v"
+
+[node name="EnemyContainer" type="Node" parent="Spawn"]
+script = ExtResource("12_6k6j1")
 
 [node name="PlacementScript" type="Node2D" parent="." node_paths=PackedStringArray("tile_map", "road_tile_map", "PlayerEconomy")]
 script = ExtResource("5_blm8a")
@@ -2053,4 +2061,5 @@ horizontal_alignment = 1
 
 [connection signal="body_entered" from="PlayerNode/EndPath/Area2D" to="PlayerNode/EndPath/Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Spawn/SpawnTimer" to="Spawn" method="_on_spawn_timer_timeout"]
+[connection signal="wave_end" from="Spawn/EnemyContainer" to="Spawn" method="_on_enemy_container_wave_end"]
 [connection signal="pressed" from="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2/Button" to="Spawn" method="create_wave"]

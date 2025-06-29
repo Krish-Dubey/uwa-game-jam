@@ -1,9 +1,9 @@
 res://scenes/map.tscn
+res://scripts/spawn.gd
 res://scenes/buildings/cannon.tscn
-res://scripts/turret.gd
 res://scenes/buildings/crossbow.tscn
 res://scenes/buildings/factory.tscn
-res://scripts/factory.gd
 res://scenes/buildings/gatling_gun.tscn
 res://scenes/buildings/sniper.tscn
-res://scripts/spawn.gd
+res://scenes/enemy_container.gd
+res://scripts/walkertest.gd
