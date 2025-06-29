@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvrxj85vd67oc"]
+
+[ext_resource type="Script" uid="uid://dv3p6fjk7w5sa" path="res://scripts/ui_building_button.gd" id="1_airp7"]
+[ext_resource type="Texture2D" uid="uid://cxyq6ffrksruy" path="res://sprite/sniper/gun.png" id="2_1m6q1"]
+[ext_resource type="Texture2D" uid="uid://2nga6qau1ih8" path="res://sprite/platform.png" id="3_mqgph"]
+[ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="4_ytdv1"]
+[ext_resource type="Texture2D" uid="uid://cyyvlws3nbkmy" path="res://sprite/sniper/base.png" id="5_xakib"]
+
+[node name="ui_sniper" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_airp7")
+tile_id = 5
+
+[node name="Turret" type="Node2D" parent="."]
+position = Vector2(30.801, 25.025)
+scale = Vector2(0.18, 0.18)
+
+[node name="Sprite2D" type="Sprite2D" parent="Turret"]
+z_index = 2
+rotation = -1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_1m6q1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Turret"]
+position = Vector2(0, 28.74)
+scale = Vector2(4, 4.8)
+texture = ExtResource("3_mqgph")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Turret"]
+position = Vector2(-1.52588e-05, 154.34)
+scale = Vector2(3.66667, 0.400001)
+texture = ExtResource("4_ytdv1")
+
+[node name="base" type="Sprite2D" parent="Turret"]
+z_index = 1
+position = Vector2(-1.385, -0.259995)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_xakib")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

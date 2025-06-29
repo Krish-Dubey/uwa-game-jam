@@ -12,8 +12,7 @@ func _physics_process(delta: float) -> void:
 		play_anim = true
 	if play_anim == true:
 		play("default", turret.fire_rate * 3.5)
-	var anim_progress = get_frame_progress()
-	print(get_frame_progress())
+	#print(get_frame_progress())
 	if get_frame_progress() > 0.9:
 		play_anim = false
 	

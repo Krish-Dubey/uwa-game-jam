@@ -1,7 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://durm5qahv4rhg"]
 
 [ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_e0x32"]
-[ext_resource type="Texture2D" uid="uid://conhbe48wu8lx" path="res://sprite/icon.svg" id="2_sypdo"]
 [ext_resource type="Texture2D" uid="uid://cdcjifnkru417" path="res://sprite/monkey-frames/tile000.png" id="2_ug7yl"]
 [ext_resource type="Script" uid="uid://bhcycc38peq4c" path="res://scripts/health_component.gd" id="3_33kmq"]
 [ext_resource type="Texture2D" uid="uid://dy0geoqwajdfe" path="res://sprite/monkey-frames/tile001.png" id="3_hv2kk"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://36etbqtr75sy" path="res://sprite/monkey-frames/tile009.png" id="11_c6gmo"]
 [ext_resource type="Texture2D" uid="uid://dftnkv7w7ogw4" path="res://sprite/monkey-frames/tile010.png" id="12_jbb6n"]
 [ext_resource type="Texture2D" uid="uid://dnbpaagbp0a6u" path="res://sprite/monkey-frames/tile011.png" id="13_kaxnr"]
+[ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="14_ug7yl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q0lbl"]
 animations = [{
@@ -72,16 +72,18 @@ script = ExtResource("1_e0x32")
 movement_speed = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 scale = Vector2(0.029, 0.029)
 sprite_frames = SubResource("SpriteFrames_q0lbl")
 autoplay = "default"
-frame_progress = 0.392574
+frame_progress = 0.422825
 flip_h = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.1875, 0.1875)
-texture = ExtResource("2_sypdo")
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatedSprite2D"]
+z_index = -1
+position = Vector2(-6.57706e-05, 344.828)
+scale = Vector2(20.944, 20.944)
+texture = ExtResource("14_ug7yl")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 2

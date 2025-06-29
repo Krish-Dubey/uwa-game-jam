@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvap245prb28r"]
 
 [ext_resource type="Texture2D" uid="uid://2nga6qau1ih8" path="res://sprite/platform.png" id="1_e127p"]
-[ext_resource type="Script" uid="uid://dv3p6fjk7w5sa" path="res://scenes/ui_building_button.gd" id="1_ewj62"]
+[ext_resource type="Script" uid="uid://dv3p6fjk7w5sa" path="res://scripts/ui_building_button.gd" id="1_ewj62"]
 [ext_resource type="Texture2D" uid="uid://bqffc62snqrff" path="res://sprite/cylinder_base.png" id="2_ewj62"]
 [ext_resource type="Texture2D" uid="uid://b1jwaq06lkrgb" path="res://sprite/gatlinggun.png" id="3_x8244"]
 

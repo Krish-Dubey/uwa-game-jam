@@ -6,4 +6,4 @@ extends Button
 func _on_pressed() -> void:
 	placement_script.build_mode = true
 	placement_script.building_id = tile_id
-	pass # Replace with function body.
+	pass 

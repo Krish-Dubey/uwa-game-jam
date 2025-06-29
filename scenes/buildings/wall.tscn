@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6c7akk0h1cy0"]
+
+[ext_resource type="Texture2D" uid="uid://drxskrgobsnhh" path="res://sprite/wall.png" id="1_wykyb"]
+[ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="2_gxk2j"]
+
+[node name="wall" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3.75)
+scale = Vector2(1, 1.2)
+texture = ExtResource("1_wykyb")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, 27.42)
+scale = Vector2(0.916667, 0.12)
+texture = ExtResource("2_gxk2j")

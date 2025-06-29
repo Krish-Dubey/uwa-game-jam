@@ -1,0 +1,89 @@
+[gd_scene load_steps=18 format=3 uid="uid://cqjuu8yn6hh26"]
+
+[ext_resource type="Script" uid="uid://dv3p6fjk7w5sa" path="res://scripts/ui_building_button.gd" id="1_304sq"]
+[ext_resource type="Texture2D" uid="uid://3u41qwl4qsoq" path="res://sprite/factory/tile000.png" id="1_v7jsd"]
+[ext_resource type="Texture2D" uid="uid://b8xljeas4baub" path="res://sprite/factory/tile001.png" id="2_304sq"]
+[ext_resource type="Texture2D" uid="uid://vbragpy7rt3h" path="res://sprite/factory/tile002.png" id="3_gdwyq"]
+[ext_resource type="Texture2D" uid="uid://ciqwitb12h77k" path="res://sprite/factory/tile003.png" id="4_olbom"]
+[ext_resource type="Texture2D" uid="uid://c7he0s31lgaki" path="res://sprite/factory/tile004.png" id="5_p4vtv"]
+[ext_resource type="Texture2D" uid="uid://dbep6giqffv4m" path="res://sprite/factory/tile005.png" id="6_rcffm"]
+[ext_resource type="Texture2D" uid="uid://cpr4l54j01dqf" path="res://sprite/factory/tile006.png" id="7_w8qrn"]
+[ext_resource type="Texture2D" uid="uid://cbtw2s2it62cu" path="res://sprite/factory/tile007.png" id="8_y0nrb"]
+[ext_resource type="Texture2D" uid="uid://bikr4fbwi0ilr" path="res://sprite/factory/tile008.png" id="9_vl3ie"]
+[ext_resource type="Texture2D" uid="uid://bd3fdsu8epsy4" path="res://sprite/factory/tile009.png" id="10_fmae7"]
+[ext_resource type="Texture2D" uid="uid://t3y0m05qx0t5" path="res://sprite/factory/tile010.png" id="11_yvevi"]
+[ext_resource type="Texture2D" uid="uid://bfj4owmkq86wg" path="res://sprite/factory/tile011.png" id="12_4ymmc"]
+[ext_resource type="Texture2D" uid="uid://bx7wjh3l7yk0k" path="res://sprite/factory/tile012.png" id="13_qyurf"]
+[ext_resource type="Texture2D" uid="uid://desi04x71obxl" path="res://sprite/factory/tile013.png" id="14_hf1qr"]
+[ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="15_d4uvb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8s1hs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v7jsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_304sq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gdwyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_olbom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p4vtv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rcffm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w8qrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y0nrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vl3ie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fmae7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yvevi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4ymmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qyurf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_hf1qr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="ui_factory" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_304sq")
+tile_id = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(33, 33)
+scale = Vector2(0.08, 0.08)
+sprite_frames = SubResource("SpriteFrames_8s1hs")
+autoplay = "default"
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+z_index = -1
+position = Vector2(-7.6, 237.77)
+scale = Vector2(12.385, 22.085)
+texture = ExtResource("15_d4uvb")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

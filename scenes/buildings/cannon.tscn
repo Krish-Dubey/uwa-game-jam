@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7yvcfgxau8tq"]
+
+[ext_resource type="Script" uid="uid://qfm11nxqsf5j" path="res://scripts/turret.gd" id="1_0285d"]
+[ext_resource type="PackedScene" uid="uid://dsbks4nx3r4da" path="res://scenes/bullet.tscn" id="2_22shy"]
+[ext_resource type="Texture2D" uid="uid://dltn6te2w4hqc" path="res://sprite/cannon.png" id="3_8ssa1"]
+[ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="4_5saov"]
+[ext_resource type="Texture2D" uid="uid://2nga6qau1ih8" path="res://sprite/platform.png" id="5_uvlre"]
+
+[node name="cannon" type="Node2D"]
+
+[node name="Turret" type="Node2D" parent="." node_paths=PackedStringArray("projectile_spawn_position")]
+position = Vector2(0, -10.935)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_0285d")
+bullet_scene = ExtResource("2_22shy")
+projectile_spawn_position = NodePath("ProjectileSpawnPosition")
+
+[node name="Sprite2D" type="Sprite2D" parent="Turret"]
+z_index = 2
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_8ssa1")
+
+[node name="ProjectileSpawnPosition" type="Marker2D" parent="Turret"]
+position = Vector2(104, -1.52588e-05)
+gizmo_extents = 208.2
+
+[node name="Shadow" type="Sprite2D" parent="Turret"]
+z_index = 1
+position = Vector2(-1.385, -0.26)
+scale = Vector2(3.16667, 11.2)
+texture = ExtResource("4_5saov")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3.75)
+scale = Vector2(1, 1.2)
+texture = ExtResource("5_uvlre")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, 27.65)
+scale = Vector2(0.916667, 0.1)
+texture = ExtResource("4_5saov")

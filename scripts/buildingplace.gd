@@ -3,9 +3,9 @@ extends Node2D
 @export var tile_map : TileMapLayer
 @export var road_tile_map : TileMapLayer
 
-var highlight_blue_scene = preload("res://scenes/highlight_blue.tscn")
+var highlight_blue_scene = preload("res://scenes/buildings/highlight_blue.tscn")
 var highlight_blue
-var highlight_red_scene = preload("res://scenes/highlight_red.tscn")
+var highlight_red_scene = preload("res://scenes/buildings/highlight_red.tscn")
 var highlight_red
 var building_id : int
 var build_mode : bool = false
