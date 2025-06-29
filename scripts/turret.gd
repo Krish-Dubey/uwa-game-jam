@@ -2,7 +2,7 @@ extends Node2D
 
 @export var turret_range: float = 200
 @export var fire_rate: float = 1
-
+@export var pollution: float = 50
 @export var bullet_scene : PackedScene
 @export var projectile_spawn_position: Node2D
 

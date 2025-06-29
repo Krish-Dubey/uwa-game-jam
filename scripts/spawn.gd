@@ -10,7 +10,7 @@ extends Marker2D
 signal new_wave
 
 var currentWave = 0
-var currentBasePoints = 3
+var currentBasePoints = 10
 var enemy_list = []
 var common_enemy_list = []
 var enemy_wave = []
