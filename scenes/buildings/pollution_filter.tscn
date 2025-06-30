@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://c6num1hrus3"]
 
-[ext_resource type="Script" uid="uid://dul4xvw114uwk" path="res://scenes/buildings/buildings_script.gd" id="1_a5fwa"]
+[ext_resource type="Script" uid="uid://cgjvtrbvtnl2f" path="res://scripts/generator.gd" id="1_a5fwa"]
 [ext_resource type="Texture2D" uid="uid://bqj7k1cp6j4cv" path="res://sprite/pollution-filter-w-funnel/tile000.png" id="1_cdflo"]
 [ext_resource type="Texture2D" uid="uid://dan1hhpgsycj4" path="res://sprite/pollution-filter-w-funnel/tile001.png" id="2_mscor"]
 [ext_resource type="Texture2D" uid="uid://ce44ha3eo3ex8" path="res://sprite/pollution-filter-w-funnel/tile002.png" id="3_n2h1d"]
 [ext_resource type="PackedScene" uid="uid://d3m3dh2eyx35i" path="res://scenes/health_component.tscn" id="5_p5dbm"]
-[ext_resource type="Script" uid="uid://nkhpo65ujp6h" path="res://scenes/buildings_health_component.gd" id="6_l4op8"]
+[ext_resource type="Script" uid="uid://bo25q7np30lrw" path="res://scenes/buildings_health_component.gd" id="6_l4op8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdflo"]
 size = Vector2(48, 48)
