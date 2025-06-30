@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://drw01swsvjm8p"]
+[gd_scene load_steps=5 format=3 uid="uid://drw01swsvjm8p"]
 
 [ext_resource type="Script" uid="uid://cww32rmivgeip" path="res://scripts/bullet.gd" id="1_30l6k"]
 [ext_resource type="Texture2D" uid="uid://r8sm8863o5aa" path="res://sprite/gatlingbullet.png" id="2_lrtcr"]
+[ext_resource type="AudioStream" uid="uid://c6bi74ldek7fh" path="res://sound/sniper-sound.mp3" id="3_lrtcr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c4ft"]
 size = Vector2(2345, 80)
@@ -26,8 +27,12 @@ rotation = 1.5708
 scale = Vector2(0.3, 19.6)
 texture = ExtResource("2_lrtcr")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Area2D"]
+stream = ExtResource("3_lrtcr")
+pitch_scale = 2.0
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 16.327
+wait_time = 5.0
 one_shot = true
 autostart = true
 
