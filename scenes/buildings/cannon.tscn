@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0c2tn8jlwr3j" path="res://scenes/buildings/buildings_script.gd" id="1_3x6yl"]
 [ext_resource type="Script" uid="uid://qfm11nxqsf5j" path="res://scripts/turret.gd" id="1_0285d"]
-[ext_resource type="PackedScene" uid="uid://dsbks4nx3r4da" path="res://scenes/bullet.tscn" id="2_22shy"]
+[ext_resource type="PackedScene" uid="uid://bgxq4cdkx7ske" path="res://scenes/explosion_bullet.tscn" id="3_3x6yl"]
 [ext_resource type="Texture2D" uid="uid://dltn6te2w4hqc" path="res://sprite/cannon.png" id="3_8ssa1"]
 [ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="4_5saov"]
 [ext_resource type="Texture2D" uid="uid://2nga6qau1ih8" path="res://sprite/platform.png" id="5_uvlre"]
@@ -29,7 +29,7 @@ y_sort_enabled = true
 position = Vector2(0, -10.935)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_0285d")
-bullet_scene = ExtResource("2_22shy")
+bullet_scene = ExtResource("3_3x6yl")
 projectile_spawn_position = NodePath("ProjectileSpawnPosition")
 
 [node name="Sprite2D" type="Sprite2D" parent="Turret"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2mnohr3c7wvu"]
+[gd_scene load_steps=16 format=3 uid="uid://2mnohr3c7wvu"]
 
 [ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_lytlq"]
 [ext_resource type="Texture2D" uid="uid://bd1vbmpn742wf" path="res://sprite/ant/tile000.png" id="1_ne3mj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cao1swlsnt4wd" path="res://sprite/ant/tile006.png" id="7_k1mt7"]
 [ext_resource type="Texture2D" uid="uid://clty047qigexk" path="res://sprite/ant/tile007.png" id="8_c3qnw"]
 [ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="9_ew2li"]
+[ext_resource type="PackedScene" uid="uid://d3m3dh2eyx35i" path="res://scenes/health_component.tscn" id="11_w8akw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_crhd5"]
 animations = [{
@@ -51,7 +52,7 @@ radius = 17.0797
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lytlq"]
 
-[node name="ant" type="CharacterBody2D" node_paths=PackedStringArray("damage_timer")]
+[node name="ant" type="CharacterBody2D" node_paths=PackedStringArray("damage_timer") groups=["enemy"]]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_lytlq")
@@ -93,6 +94,9 @@ debug_color = Color(0.65427, 0.517664, 7.70092e-07, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lytlq")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("11_w8akw")]
+agent = NodePath("..")
 
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
 [connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]

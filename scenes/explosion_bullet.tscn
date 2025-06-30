@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgxq4cdkx7ske"]
+
+[ext_resource type="Script" uid="uid://7864k10ah3a3" path="res://scenes/explosion_bullet.gd" id="1_jc3h1"]
+[ext_resource type="PackedScene" uid="uid://co84ct60gx8dm" path="res://scenes/explosion.tscn" id="2_kn2hg"]
+[ext_resource type="Texture2D" uid="uid://c6ifxa78ns15e" path="res://sprite/Cannonball.png" id="3_yx1rq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn2hg"]
+size = Vector2(64, 64)
+
+[node name="explosion_bullet" type="Node2D"]
+z_index = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_jc3h1")
+explosion_scene = ExtResource("2_kn2hg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8.9407e-08, -4.76837e-07)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_kn2hg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+z_index = -1
+texture = ExtResource("3_yx1rq")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
