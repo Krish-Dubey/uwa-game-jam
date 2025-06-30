@@ -13,15 +13,6 @@ var build_mode : bool = false
 
 var building_price : int = 0
 
-#var priceIndex = {
-	#1 : 150, # Gatling
-	#2 : 50, # Wall
-	#3 : 100, # Crossbow
-	#4 : 300, # Cannon
-	#5 : 350, # Sniper
-	#6 : 100, # Factory
-#}
-
 func _ready() -> void:
 	highlight_blue =  highlight_blue_scene.instantiate()
 	add_child(highlight_blue)

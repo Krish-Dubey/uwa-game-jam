@@ -1,12 +1,4 @@
-res://scenes/buildings/ui_solar_panel.tscn
-res://scripts/buildingplace.gd
-res://scripts/ui_building_button.gd
-res://scenes/buildings/ui_pollution_filter.tscn
-res://scenes/buildings/ui_cannon.tscn
-res://scenes/buildings/ui_crossbow.tscn
-res://scenes/buildings/ui_factory.tscn
-res://scenes/buildings/ui_gatling_gun.tscn
-res://scenes/buildings/ui_sniper.tscn
-res://scenes/buildings/ui_wall.tscn
 res://scenes/map.tscn
-res://scenes/building_info_ui.gd
+res://scripts/buildingplace.gd
+res://scripts/factory.gd
+res://scenes/buildings/factory.tscn
