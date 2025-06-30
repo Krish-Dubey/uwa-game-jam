@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxj0s3q4c3wj3"]
 
 [ext_resource type="Texture2D" uid="uid://cm0mh5tqs3a4r" path="res://sprite/solar_panel.png" id="1_a33p7"]
-[ext_resource type="Script" uid="uid://dul4xvw114uwk" path="res://scenes/buildings/buildings_script.gd" id="1_p2q7k"]
+[ext_resource type="Script" uid="uid://c0c2tn8jlwr3j" path="res://scenes/buildings/buildings_script.gd" id="1_p2q7k"]
 [ext_resource type="PackedScene" uid="uid://d3m3dh2eyx35i" path="res://scenes/health_component.tscn" id="2_k6st7"]
 [ext_resource type="Script" uid="uid://bo25q7np30lrw" path="res://scenes/buildings_health_component.gd" id="3_p2q7k"]
 
