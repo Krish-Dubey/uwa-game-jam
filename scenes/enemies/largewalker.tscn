@@ -76,7 +76,7 @@ collision_mask = 4
 script = ExtResource("1_tlqob")
 damage_timer = NodePath("Area2D2/Timer")
 movement_speed = 100.0
-value = 350
+value = 175
 base_damage = 5
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("agent")]

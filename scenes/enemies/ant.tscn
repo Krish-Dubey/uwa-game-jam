@@ -58,7 +58,7 @@ collision_mask = 4
 script = ExtResource("1_lytlq")
 damage_timer = NodePath("Area2D2/Timer")
 movement_speed = 300.0
-value = 350
+value = 175
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
