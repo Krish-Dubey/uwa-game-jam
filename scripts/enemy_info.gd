@@ -27,6 +27,18 @@ var EnemiesList = [
 		"resourcePath": "res://scenes/enemies/flyers.tscn",
 		"cost" : 1,
 		"rarity" : "common"
+	},
+	{
+		"enemyName": "Ant",
+		"resourcePath": "res://scenes/enemies/ant.tscn",
+		"cost" : 3,
+		"rarity" : "common"
+	},
+	{
+		"enemyName": "Wrecker",
+		"resourcePath": "res://scenes/enemies/wrecker.tscn",
+		"cost" : 10,
+		"rarity" : "common"
 	}
 	
 ]

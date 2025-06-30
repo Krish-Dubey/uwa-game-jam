@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://btbg2m4lb48oo"]
+[gd_scene load_steps=19 format=3 uid="uid://btbg2m4lb48oo"]
 
+[ext_resource type="Script" uid="uid://bcoottpwkok88" path="res://scenes/enemies/wrecker.gd" id="1_adupw"]
 [ext_resource type="Texture2D" uid="uid://cr5gy5xy2fk0q" path="res://sprite/wrecker/frame00.png" id="1_w0wll"]
 [ext_resource type="Texture2D" uid="uid://b5iwidtpaeyvl" path="res://sprite/wrecker/frame01.png" id="2_4ybt1"]
 [ext_resource type="Texture2D" uid="uid://dce3o5i5xtd3g" path="res://sprite/wrecker/frame02.png" id="3_1xer5"]
@@ -11,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://b8d2pokcivrj3" path="res://sprite/wrecker/frame08.png" id="9_q0rgd"]
 [ext_resource type="Texture2D" uid="uid://b7pmw6if5ytmq" path="res://sprite/wrecker/frame09.png" id="10_olgcu"]
 [ext_resource type="Texture2D" uid="uid://d175y6s20hsu5" path="res://sprite/wrecker/frame10.png" id="11_3c0bk"]
+[ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="13_eedtt"]
+[ext_resource type="PackedScene" uid="uid://d3m3dh2eyx35i" path="res://scenes/health_component.tscn" id="14_gfnjq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c28ae"]
 animations = [{
@@ -50,12 +53,66 @@ animations = [{
 }],
 "loop": true,
 "name": &"new_animation",
-"speed": 10.0
+"speed": 1.0
 }]
 
-[node name="Wrecker" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jng1i"]
+size = Vector2(70, 75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5d3gg"]
+radius = 38.0789
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apnx6"]
+
+[node name="Wrecker" type="CharacterBody2D" node_paths=PackedStringArray("damage_timer") groups=["enemy"]]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_adupw")
+damage_timer = NodePath("Area2D2/Timer")
+movement_speed = 5.0
+damage = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -40)
+scale = Vector2(0.13, 0.13)
 sprite_frames = SubResource("SpriteFrames_c28ae")
 animation = &"new_animation"
-frame_progress = 0.0222403
+autoplay = "new_animation"
+frame_progress = 0.932562
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatedSprite2D"]
+z_index = -1
+position = Vector2(-61.5385, 400)
+scale = Vector2(13.1053, 13.1053)
+texture = ExtResource("13_eedtt")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("14_gfnjq")]
+max_health = 1000.0
+agent = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Hit Box" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5, -17.5)
+shape = SubResource("RectangleShape2D_jng1i")
+debug_color = Color(0.968513, 0, 0.46738, 0.42)
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Hurt Box" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_5d3gg")
+debug_color = Color(0.65427, 0.517664, 7.70092e-07, 0.42)
+
+[node name="Timer" type="Timer" parent="Area2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_apnx6")
+
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]
+[connection signal="timeout" from="Area2D2/Timer" to="." method="_on_timer_timeout"]

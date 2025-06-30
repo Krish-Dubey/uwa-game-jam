@@ -1,48 +1,32 @@
 extends CharacterBody2D
 
 @onready var health_component : HealthComponent = $HealthComponent
-@onready var anim_sprite : AnimatedSprite2D = $AnimatedSprite2D
-
 @onready var road_tile
 @onready var path
 @onready var path_id = 1
-
+@onready var anim_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var last_path_size
 @onready var hurt_box: Area2D = $Area2D2
 
-@export var damage = 10
-var attacking = true
+
+var path_changed = false
+var attacking = false
 var navigation_target = Vector2.ZERO #Initial Target
+
 var target = null
+
 @export var damage_timer: Timer
 @export var movement_speed: float = 50
-
+@export var damage: int = 25
 
 func _ready() -> void:
-	anim_sprite.speed_scale = movement_speed /2
+	anim_sprite.speed_scale = movement_speed /8
 
 
 func _physics_process(delta: float) -> void:
-	var closest_distance = INF
-	var closest_generators : Vector2
-	var dist
-	if get_tree().get_nodes_in_group("generators").size() > 0:
-		for generators in get_tree().get_nodes_in_group("generators"):
-			if not is_instance_valid(generators):
-				continue
-		
-			dist = global_position.distance_to(generators.global_position)
-			if dist <= closest_distance:
-				closest_distance = dist
-				closest_generators = generators.global_position
-	else:
-		closest_generators = navigation_target
-	#print(closest_distance)
-	
-	
-	var new_velocity = global_position.direction_to(closest_generators) * movement_speed
+	var new_velocity = global_position.direction_to(navigation_target) * movement_speed
 	velocity = new_velocity
-
+	attacking = true
 	move_and_slide()
 
 
@@ -56,7 +40,7 @@ func _on_area_2d_2_area_entered(area: Area2D) -> void:
 func _on_area_2d_2_area_exited(area: Area2D) -> void:
 	damage_timer.stop()
 	target = null
-
+	attacking = false
 
 func _on_timer_timeout() -> void:
 	if target:

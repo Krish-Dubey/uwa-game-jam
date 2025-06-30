@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://w7txbxenbvbp"]
+[gd_scene load_steps=13 format=3 uid="uid://w7txbxenbvbp"]
 
 [ext_resource type="Script" uid="uid://c4t5xgibbdh4c" path="res://scenes/flyers_script.gd" id="1_ootqy"]
 [ext_resource type="Texture2D" uid="uid://cjodbrbx8ksco" path="res://sprite/flying-enemy/tile000.png" id="2_cg1x7"]
@@ -35,8 +35,16 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="flyers" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg1x7"]
+radius = 6.32456
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hvle4"]
+
+[node name="flyers" type="CharacterBody2D" node_paths=PackedStringArray("damage_timer") groups=["enemy"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_ootqy")
+damage_timer = NodePath("Area2D2/Timer")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -0.0349998)
@@ -64,3 +72,20 @@ z_index = -1
 position = Vector2(0, 1400)
 scale = Vector2(20.944, 20.944)
 texture = ExtResource("7_7odd3")
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Hurt Box" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_cg1x7")
+debug_color = Color(0.65427, 0.517664, 7.70092e-07, 0.42)
+
+[node name="Timer" type="Timer" parent="Area2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hvle4")
+
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]
+[connection signal="timeout" from="Area2D2/Timer" to="." method="_on_timer_timeout"]

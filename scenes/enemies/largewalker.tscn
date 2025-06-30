@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chkg13dto4xne"]
+[gd_scene load_steps=20 format=3 uid="uid://chkg13dto4xne"]
 
 [ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_tlqob"]
 [ext_resource type="Script" uid="uid://bhcycc38peq4c" path="res://scripts/health_component.gd" id="3_34tvn"]
@@ -65,10 +65,16 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyin3"]
 
-[node name="LargeWalker" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pyin3"]
+radius = 17.0797
+
+[node name="LargeWalker" type="CharacterBody2D" node_paths=PackedStringArray("damage_timer") groups=["enemy"]]
 z_index = 1
 scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_tlqob")
+damage_timer = NodePath("Area2D2/Timer")
 movement_speed = 100.0
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("agent")]
@@ -99,3 +105,17 @@ texture = ExtResource("15_u640h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pyin3")
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Hurt Box" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_pyin3")
+debug_color = Color(0.65427, 0.517664, 7.70092e-07, 0.42)
+
+[node name="Timer" type="Timer" parent="Area2D2"]
+
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]
+[connection signal="timeout" from="Area2D2/Timer" to="." method="_on_timer_timeout"]
