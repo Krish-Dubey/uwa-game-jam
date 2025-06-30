@@ -1775,8 +1775,10 @@ script = ExtResource("3_jh32y")
 position = Vector2(-15.2675, -0.5)
 shape = SubResource("RectangleShape2D_urblq")
 
-[node name="PlayerEconomy" type="Node" parent="PlayerNode"]
+[node name="PlayerEconomy" type="Node" parent="PlayerNode" node_paths=PackedStringArray("EnergyBar", "PollutionBar")]
 script = ExtResource("9_mo32q")
+EnergyBar = NodePath("../../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container/PanelContainer2/ProgressBar")
+PollutionBar = NodePath("../../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container/PanelContainer2/ProgressBar")
 
 [node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("EnemyInfo", "SpawnTimer", "PlayerEconomy", "EnemyContainer", "target", "road_tile_map_", "placement_tile", "wave_label", "next_wave_button", "buldings_button", "placement_script")]
 top_level = true

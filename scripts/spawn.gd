@@ -88,6 +88,7 @@ func create_wave():
 	for buttons in buldings_button:
 		buttons.disabled = true
 	placement_script.build_mode = false
+	EnemyContainer.wave_standby = 0
 
 func _on_enemy_container_wave_end() -> void:
 	next_wave_button.disabled = false
