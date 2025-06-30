@@ -11,6 +11,9 @@ extends Marker2D
 @export var next_wave_button : Button
 @export var buldings_button : Array[Button]
 @export var placement_script : Node
+
+var rng = RandomNumberGenerator.new()
+
 signal new_wave
 
 var currentWave = 0
@@ -78,7 +81,7 @@ func create_wave():
 	wave_label.text = "Waves : " + str(currentWave)
 	var common_list = EnemyInfo.getCategory("common")
 	while currentPoint > 0:
-		enemy_wave.append(EnemyInfo.LoadedEnemies[common_list[0]])
+		enemy_wave.append(EnemyInfo.LoadedEnemies[rng.randi_range(0, EnemyInfo.LoadedEnemies.size() - 1)])
 		currentPoint -= 1
 	new_wave.emit()
 	next_wave_button.disabled = true

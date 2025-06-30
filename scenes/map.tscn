@@ -1877,7 +1877,6 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.117647, 0.117647, 0.117647, 1)
 theme_override_constants/outline_size = 5
 theme_override_styles/fill = SubResource("StyleBoxFlat_mkblt")
-value = 51.87
 
 [node name="Pollution Vbox Container" type="VBoxContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2"]
 layout_mode = 2
@@ -1899,7 +1898,6 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_styles/fill = SubResource("StyleBoxFlat_6ek7f")
-value = 52.03
 
 [node name="BG Color" type="ColorRect" parent="UI/UI Top Left/PanelContainer"]
 z_index = -1
@@ -2229,6 +2227,7 @@ layout_mode = 2
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[connection signal="area_entered" from="PlayerNode/EndPath/Area2D" to="PlayerNode/EndPath/Area2D" method="_on_area_entered"]
 [connection signal="body_entered" from="PlayerNode/EndPath/Area2D" to="PlayerNode/EndPath/Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Spawn/SpawnTimer" to="Spawn" method="_on_spawn_timer_timeout"]
 [connection signal="wave_end" from="Spawn/EnemyContainer" to="Spawn" method="_on_enemy_container_wave_end"]

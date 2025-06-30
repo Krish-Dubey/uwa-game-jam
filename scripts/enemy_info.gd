@@ -11,7 +11,14 @@ var EnemiesList = [
 	
 	{
 		"enemyName": "FastWalker",
-		"resourcePath": "res://scenes/enemies/walkertest.tscn",
+		"resourcePath": "res://scenes/enemies/fastwalker.tscn",
+		"cost" : 2,
+		"rarity" : "common"
+	},
+	
+	{
+		"enemyName": "LargeWalker",
+		"resourcePath": "res://scenes/enemies/largewalker.tscn",
 		"cost" : 2,
 		"rarity" : "common"
 	}
