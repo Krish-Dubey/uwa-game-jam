@@ -1771,7 +1771,6 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_p5pve")
 
 [node name="Border" type="StaticBody2D" parent="tilemap"]
-visible = false
 z_index = -2
 collision_mask = 0
 
