@@ -147,8 +147,8 @@ func _on_enemy_container_wave_end() -> void:
 		if PlayerEconomy.EnergyBar.value >= 100:
 			PlayerEconomy.EnergyQuotaLevel += 1
 			PlayerEconomy.EnergyBar.value = 0
-			PlayerEconomy.QuotaThreshold = PlayerEconomy.QuotaThreshold * 1.2
-			PlayerEconomy.CurrentPollution = 0
+			PlayerEconomy.QuotaThreshold = PlayerEconomy.QuotaThreshold * 2
+			PlayerEconomy.EnergyGenerated = 0
 			PlayerEconomy.EnergyText.text = "Energy Quota Level " + str(PlayerEconomy.EnergyQuotaLevel)
 		else:
 			var game_over = game_over_screen.instantiate()
