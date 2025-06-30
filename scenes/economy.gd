@@ -15,7 +15,7 @@ var EnergyQuotaLevel = 1
 var buildings = []
 
 @export var PollutionThreshold = 300
-@export var QuotaThreshold = 100
+@export var QuotaThreshold = 600
 
 func addPollution(pollution):
 	CurrentPollution += pollution
@@ -40,7 +40,7 @@ func addEnergy(energy):
 	EnergyBar.value = (EnergyGenerated / QuotaThreshold) * 100
 
 func _on_enemy_container_wave_end() -> void:
-	var buildings = get_tree().get_nodes_in_group("buildings")
+	buildings = get_tree().get_nodes_in_group("buildings")
 	for building in buildings:
 		if building.pollution:
 			addPollution(building.pollution)

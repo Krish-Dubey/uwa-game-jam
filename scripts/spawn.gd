@@ -11,6 +11,7 @@ extends Marker2D
 @export var next_wave_button : Button
 @export var buldings_button : Array[Button]
 @export var placement_script : Node
+@export var game_over_screen : PackedScene
 
 var categories_string = ["common", "uncommon", "rare", "boss"]
 var rng = RandomNumberGenerator.new()
@@ -139,12 +140,19 @@ func create_wave():
 	EnemyContainer.wave_standby = 0
 
 func _on_enemy_container_wave_end() -> void:
-	print("happened")
 	next_wave_button.disabled = false
 	for buttons in buldings_button:
 		buttons.disabled = false
 	if currentWave % 5 == 0:
-		pass
+		if PlayerEconomy.EnergyBar >= 100:
+			PlayerEconomy.EmerguQuotaLevel += 1
+			PlayerEconomy.EnergyBar.value = 0
+			PlayerEconomy.QuotaThreshold = PlayerEconomy.QuotaThreshold * 1.2
+			PlayerEconomy.CurrentPollution = 0
+			PlayerEconomy.EnergyText.text = "Energy Quota Level " + str(PlayerEconomy.EnergyQuotaLevel)
+		else:
+			var game_over = game_over_screen.instantiate()
+			get_tree().current_scene.add_child(game_over)
 
 func _on_path_update_timer_timeout() -> void:
 	update_astar_path()

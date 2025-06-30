@@ -5,9 +5,6 @@ signal wave_end
 var wave_standby = 1
 @onready var monkeh_noises : AudioStreamPlayer = $AudioStreamPlayer
 func _physics_process(delta: float) -> void:
-	print(get_children())
-	print(SpawnParent.enemy_wave)
-	print(wave_standby)
 	if get_children().size() == 1 and SpawnParent.enemy_wave == [] and wave_standby == 0:
 		wave_end.emit()
 		wave_standby = 1
