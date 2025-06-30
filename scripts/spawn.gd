@@ -98,6 +98,7 @@ func create_wave():
 	if currentWave == 10:
 		boss_cutoff -= 10
 	elif currentWave % 10 == 0:
+		enemy_wave.append(EnemyInfo.LoadedEnemies["boss"[0][0]])
 		boss_cutoff -= 5
 	
 	wave_label.text = "Waves : " + str(currentWave)
@@ -138,13 +139,14 @@ func create_wave():
 	EnemyContainer.wave_standby = 0
 
 func _on_enemy_container_wave_end() -> void:
+	print("happened")
 	next_wave_button.disabled = false
 	for buttons in buldings_button:
 		buttons.disabled = false
-	pass
+	if currentWave % 5 == 0:
+		pass
 
 func _on_path_update_timer_timeout() -> void:
-	#print(id_path)
 	update_astar_path()
 	for enemy in get_tree().get_nodes_in_group("enemy"):
 		enemy.path = id_path
