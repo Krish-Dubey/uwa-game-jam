@@ -25,6 +25,7 @@ window/size/viewport_height=720
 enemy=""
 buildings=""
 generators=""
+PlayerEconomy=""
 
 [input]
 

@@ -8,7 +8,6 @@ extends CharacterBody2D
 @onready var last_path_size
 @onready var hurt_box: Area2D = $Area2D2
 
-
 var path_changed = false
 var attacking = false
 var navigation_target = Vector2.ZERO #Initial Target
@@ -18,7 +17,8 @@ var target = null
 @export var damage_timer: Timer
 @export var movement_speed: float = 50
 @export var damage: int = 25
-
+@export var value: int = 10
+@export var base_damage: int = 1
 func _ready() -> void:
 	anim_sprite.speed_scale = movement_speed /2
 

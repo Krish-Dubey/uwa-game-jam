@@ -1708,7 +1708,7 @@ size = Vector2(185.75, 250.087)
 size = Vector2(185.75, 431.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urblq"]
-size = Vector2(69.7951, 47)
+size = Vector2(115.8, 47)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30iet"]
 bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
@@ -1823,10 +1823,10 @@ collision_mask = 3
 script = ExtResource("3_jh32y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNode/EndPath/Area2D"]
-position = Vector2(-15.2675, -0.5)
+position = Vector2(-38.27, -0.5)
 shape = SubResource("RectangleShape2D_urblq")
 
-[node name="PlayerEconomy" type="Node" parent="PlayerNode" node_paths=PackedStringArray("EnergyBar", "PollutionBar")]
+[node name="PlayerEconomy" type="Node" parent="PlayerNode" node_paths=PackedStringArray("EnergyBar", "PollutionBar") groups=["PlayerEconomy"]]
 script = ExtResource("9_mo32q")
 EnergyBar = NodePath("../../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container/PanelContainer2/ProgressBar")
 PollutionBar = NodePath("../../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container/PanelContainer2/ProgressBar")
@@ -1845,7 +1845,7 @@ road_tile_map_ = NodePath("../tilemap/Road")
 placement_tile = NodePath("../tilemap/PlacementTile")
 wave_label = NodePath("../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2/Label")
 next_wave_button = NodePath("../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2/Button")
-buldings_button = [NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui/AspectRatioContainer/ui_wall"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui2/AspectRatioContainer/ui_gatling_gun"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui3/AspectRatioContainer/ui_crossbow"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui4/AspectRatioContainer/ui_cannon"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui5/AspectRatioContainer/ui_sniper"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui/AspectRatioContainer/ui_factory")]
+buldings_button = [NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui/AspectRatioContainer/ui_wall"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui2/AspectRatioContainer/ui_gatling_gun"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui3/AspectRatioContainer/ui_crossbow"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui4/AspectRatioContainer/ui_cannon"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui5/AspectRatioContainer/ui_sniper"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui/AspectRatioContainer/ui_factory"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui3/AspectRatioContainer/ui_solar_panel"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui2/AspectRatioContainer/ui_pollution_filter")]
 placement_script = NodePath("../PlacementScript")
 
 [node name="SpawnTimer" type="Timer" parent="Spawn"]

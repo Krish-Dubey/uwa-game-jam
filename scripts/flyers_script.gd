@@ -15,6 +15,8 @@ extends CharacterBody2D
 var navigation_target = Vector2.ZERO #Initial Target
 
 @export var movement_speed: float = 50
+@export var value: int = 100
+@export var base_damage : int = 1
 
 
 func _ready() -> void:

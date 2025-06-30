@@ -10,10 +10,11 @@ func _ready() -> void:
 	health = max_health
 
 func take_damage(amount):
-	print(health)
 	health -= amount
 	if health <= 0:
 		die()
 
 func die():
+	var playerEconomy = agent.get_tree().get_first_node_in_group("PlayerEconomy")
+	playerEconomy.ConstructionCash += agent.value
 	agent.queue_free()

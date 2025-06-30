@@ -70,6 +70,8 @@ z_index = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_tlqob")
 movement_speed = 100.0
+value = 350
+base_damage = 5
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("agent")]
 script = ExtResource("3_34tvn")

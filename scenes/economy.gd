@@ -3,7 +3,7 @@ extends Node
 @export var EnergyBar : ProgressBar
 @export var PollutionBar : ProgressBar
 
-var ConstructionCash = 500
+var ConstructionCash = 1500
 var EnergyGenerated = 0
 var CurrentPollution = 0
 

@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" uid="uid://bhcycc38peq4c" path="res://scripts/health_component.gd" id="1_a1tyf"]
 
-[node name="HealthComponent" type="Node" node_paths=PackedStringArray("agent")]
+[node name="HealthComponent" type="Node"]
 script = ExtResource("1_a1tyf")
-agent = NodePath("")
