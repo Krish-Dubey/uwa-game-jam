@@ -15,7 +15,7 @@ building_name = "Cannon"
 building_hp = 100
 building_dmg = 10
 building_tooltip = "Deal Splash Damage"
-building_cost = "100"
+building_cost = 300
 
 [node name="Turret" type="Node2D" parent="."]
 position = Vector2(32.645, 25.095)

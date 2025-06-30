@@ -13,6 +13,7 @@ extends Button
 func _on_pressed() -> void:
 	placement_script.build_mode = true
 	placement_script.building_id = tile_id
+	placement_script.building_price = building_cost
 	pass 
 
 

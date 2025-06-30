@@ -15,7 +15,7 @@ building_name = "Gatling Gun"
 building_hp = 100
 building_dmg = 10
 building_tooltip = "Fast Shooting Turret"
-building_cost = "100"
+building_cost = 150
 
 [node name="Container" type="Node2D" parent="."]
 position = Vector2(4, 7)

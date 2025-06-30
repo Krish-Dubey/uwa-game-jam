@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=48 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://sprite/punyworld-overworld-tileset.png" id="1_2lpho"]
 [ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/buildings/gatling_gun.tscn" id="2_nakos"]
@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://c2gfat4iqh5xk" path="res://scenes/buildings/ui_wall.tscn" id="9_mlgqr"]
 [ext_resource type="Script" uid="uid://47hdxw02w2yf" path="res://scenes/economy.gd" id="9_mo32q"]
 [ext_resource type="PackedScene" uid="uid://bvap245prb28r" path="res://scenes/buildings/ui_gatling_gun.tscn" id="10_mlgqr"]
-[ext_resource type="Script" uid="uid://byluuxwk7m40e" path="res://scenes/building_info_ui.gd" id="12_mo32q"]
 [ext_resource type="Script" uid="uid://pyre2w6xvvwv" path="res://scenes/enemy_container.gd" id="12_6k6j1"]
+[ext_resource type="Script" uid="uid://byluuxwk7m40e" path="res://scenes/building_info_ui.gd" id="12_mo32q"]
 [ext_resource type="PackedScene" uid="uid://bahpg4a8ojpee" path="res://scenes/buildings/ui_cannon.tscn" id="13_gw3fx"]
 [ext_resource type="PackedScene" uid="uid://cvrxj85vd67oc" path="res://scenes/buildings/ui_sniper.tscn" id="15_p7tei"]
 [ext_resource type="PackedScene" uid="uid://cqjuu8yn6hh26" path="res://scenes/buildings/ui_factory.tscn" id="17_mo32q"]
@@ -992,6 +992,7 @@ texture = ExtResource("1_2lpho")
 25:0/0 = 0
 26:0/0 = 0
 0:1/0 = 0
+0:1/0/custom_data_1 = true
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
@@ -1668,6 +1669,8 @@ texture = ExtResource("1_2lpho")
 tile_size = Vector2i(48, 48)
 custom_data_layer_0/name = "unwalkable"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "unplaceable"
+custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_2lpho")
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_iw27f"]
@@ -1695,11 +1698,26 @@ pattern_0 = SubResource("TileMapPattern_iw27f")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urblq"]
 size = Vector2(69.7951, 47)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30iet"]
+bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkblt"]
+bg_color = Color(0.258998, 0.738854, 0.750056, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4o3w1"]
+bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ek7f"]
+bg_color = Color(0.693494, 0.320981, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlgqr"]
 bg_color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wslke"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2ir2"]
+bg_color = Color(0.051971, 0.051971, 0.0519709, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c00ee"]
 bg_color = Color(0.537665, 0.0885702, 0, 1)
@@ -1710,17 +1728,14 @@ bg_color = Color(0.513983, 0.399755, 0.0188735, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c70he"]
 bg_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mo32q"]
-bg_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k6j1"]
-bg_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m335s"]
 bg_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sq6bu"]
 bg_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5u2yt"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
 
 [node name="Map" type="Node2D"]
 y_sort_enabled = true
@@ -1732,7 +1747,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAEAAQAAAAA
 tile_set = SubResource("TileSet_e0an3")
 
 [node name="Road" type="TileMapLayer" parent="tilemap"]
-tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAD//wIAAAAAAAAAAAABAAEAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAACAAwAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAASAAEAAAAAAAAAAAASAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAATAAEAAAAAAAAAAAATAAIAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAAAAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAkAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAEAAAAAAAAAAAAVAAIAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAQAAAAAAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAcAAAAAAAAAAAAVAAgAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAEAAAAAAAAAAAAWAAIAAAAAAAAAAAAWAAMAAAAAAAAAAAAWAAQAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAMAAAAAAAAAAAAYAAMAAAAAAAAAAAAZAAMAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAEAAAABAAIAAAAAAAAAAAD//wIAAAAAAAEAAAABAAEAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAACAAwAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAASAAEAAAAAAAAAAAASAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAATAAEAAAAAAAAAAAATAAIAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAAAAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAkAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAEAAAAAAAAAAAAVAAIAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAQAAAAAAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAcAAAAAAAAAAAAVAAgAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAEAAAAAAAAAAAAWAAIAAAAAAAAAAAAWAAMAAAAAAAAAAAAWAAQAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAMAAAAAAAEAAAAYAAMAAAAAAAEAAAAZAAMAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_nakos")
 
 [node name="RoadDisplay" type="TileMapLayer" parent="tilemap"]
@@ -1841,26 +1856,74 @@ text = "Start Wave"
 [node name="Label" type="Label" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2"]
 layout_mode = 2
 
+[node name="Energy Vbox Container" type="VBoxContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_30iet")
+
+[node name="Label" type="Label" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container/PanelContainer"]
+layout_mode = 2
+text = "Energy"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container/PanelContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.117647, 0.117647, 0.117647, 1)
+theme_override_constants/outline_size = 5
+theme_override_styles/fill = SubResource("StyleBoxFlat_mkblt")
+value = 51.87
+
+[node name="Pollution Vbox Container" type="VBoxContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4o3w1")
+
+[node name="Label" type="Label" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container/PanelContainer"]
+layout_mode = 2
+text = "Pollution"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container/PanelContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_styles/fill = SubResource("StyleBoxFlat_6ek7f")
+value = 52.03
+
 [node name="BG Color" type="ColorRect" parent="UI/UI Top Left/PanelContainer"]
 z_index = -1
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.252028, 0.252028, 0.252028, 1)
 
-[node name="UI Top Right" type="Control" parent="UI" node_paths=PackedStringArray("label_name", "label_hp", "label_dmg", "label_tooltip", "label_cost")]
+[node name="UI Top Right" type="Control" parent="UI" node_paths=PackedStringArray("economy_script", "label_name", "label_hp", "label_dmg", "label_tooltip", "label_cost", "label_cash")]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -40.0
-offset_bottom = 40.0
+offset_top = -73.9
+offset_bottom = -33.9
 grow_horizontal = 0
 script = ExtResource("12_mo32q")
+economy_script = NodePath("../../PlayerNode/PlayerEconomy")
 label_name = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/building_label")
 label_hp = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer3/hp_value")
 label_dmg = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer4/dmg_value")
 label_tooltip = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer4/Tooltip")
 label_cost = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer6/cost_value")
+label_cash = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer7/MarginContainer/cash_value")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/UI Top Right"]
 layout_mode = 1
@@ -1893,7 +1956,41 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="Label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="cash_label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "CASH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer7" type="PanelContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y2ir2")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer7"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="cash_value" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer7/MarginContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wslke")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="buildings_label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer"]
 layout_mode = 2
 text = "BUILDINGS"
 horizontal_alignment = 1
@@ -1926,7 +2023,6 @@ stretch_mode = 1
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
 info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui2" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox"]
 layout_mode = 2
@@ -1943,7 +2039,6 @@ stretch_mode = 0
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
 info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui3" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox"]
 layout_mode = 2
@@ -1960,7 +2055,6 @@ stretch_mode = 1
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
 info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui4" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox"]
 layout_mode = 2
@@ -1977,7 +2071,6 @@ stretch_mode = 1
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
 info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui5" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox"]
 layout_mode = 2
@@ -2017,7 +2110,6 @@ stretch_mode = 1
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
 info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui2" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX"]
 layout_mode = 2
@@ -2034,7 +2126,6 @@ stretch_mode = 1
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
 info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui3" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX"]
 layout_mode = 2
@@ -2067,7 +2158,6 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_mo32q")
 
 [node name="hp_label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
 layout_mode = 2
@@ -2077,7 +2167,6 @@ horizontal_alignment = 1
 [node name="PanelContainer2" type="PanelContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_6k6j1")
 
 [node name="dmg_label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2"]
 layout_mode = 2
@@ -2121,7 +2210,7 @@ autowrap_mode = 2
 [node name="PanelContainer5" type="PanelContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_sq6bu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5u2yt")
 
 [node name="cost_label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer5"]
 layout_mode = 2

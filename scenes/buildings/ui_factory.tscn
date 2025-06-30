@@ -76,7 +76,7 @@ tile_id = 6
 building_name = "Factory"
 building_hp = 50
 building_tooltip = "Generates Energy and Pollution"
-building_cost = "50"
+building_cost = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(33, 33)

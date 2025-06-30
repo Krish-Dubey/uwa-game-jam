@@ -11,14 +11,16 @@ var highlight_red
 var building_id : int
 var build_mode : bool = false
 
-var priceIndex = {
-	1 : 150, # Gatling
-	2 : 50, # Wall
-	3 : 100, # Crossbow
-	4 : 300, # Cannon
-	5 : 350, # Sniper
-	6 : 100, # Factory
-}
+var building_price : int = 0
+
+#var priceIndex = {
+	#1 : 150, # Gatling
+	#2 : 50, # Wall
+	#3 : 100, # Crossbow
+	#4 : 300, # Cannon
+	#5 : 350, # Sniper
+	#6 : 100, # Factory
+#}
 
 func _ready() -> void:
 	highlight_blue =  highlight_blue_scene.instantiate()
@@ -35,7 +37,7 @@ func _process(delta: float) -> void:
 		var tile_mouse_pos = tile_map.local_to_map(mouse_pos)
 		var tile_data = road_tile_map.get_cell_tile_data(road_tile_map.local_to_map(mouse_pos))
 		var highlight_pos = tile_map.map_to_local(tile_mouse_pos)
-		if tile_data == null or tile_map.get_cell_atlas_coords(tile_mouse_pos) == Vector2i(0,0):
+		if tile_data == null or tile_data.get_custom_data("unplaceable") or  tile_map.get_cell_atlas_coords(tile_mouse_pos) == Vector2i(0,0):
 			highlight_red.visible = true
 			highlight_blue.visible = false
 			highlight_red.global_position = highlight_pos
@@ -60,10 +62,10 @@ func place_building(id):
 	var mouse_pos = get_global_mouse_position()
 	var tile_mouse_pos = tile_map.local_to_map(mouse_pos)
 	var tile_data = road_tile_map.get_cell_tile_data(road_tile_map.local_to_map(mouse_pos))
-	if tile_data == null or tile_map.get_cell_atlas_coords(tile_mouse_pos) == Vector2i(0,0):
+	if tile_data == null or tile_data.get_custom_data("unplaceable") or tile_map.get_cell_atlas_coords(tile_mouse_pos) == Vector2i(0,0):
 		print("You cant place on a road")
-	elif priceIndex[building_id] > PlayerEconomy.ConstructionCash:
+	elif building_price > PlayerEconomy.ConstructionCash:
 		print("Not enough money!")
 	else:
-		PlayerEconomy.ConstructionCash -= priceIndex[building_id]
+		PlayerEconomy.ConstructionCash -= building_price
 		tile_map.set_cell(tile_mouse_pos, 0, Vector2i(0,0), id)

@@ -33,7 +33,7 @@ building_name = "Crossbow"
 building_hp = 100
 building_dmg = 10
 building_tooltip = "Medium Ranged Turret"
-building_cost = "100"
+building_cost = 100
 
 [node name="Container" type="Node2D" parent="."]
 position = Vector2(7, 7)

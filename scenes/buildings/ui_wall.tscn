@@ -12,7 +12,7 @@ tile_id = 2
 building_name = "Wall"
 building_hp = 500
 building_tooltip = "A Sturdy Wall"
-building_cost = "25"
+building_cost = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(32, 32)

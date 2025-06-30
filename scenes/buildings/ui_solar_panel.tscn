@@ -11,8 +11,8 @@ script = ExtResource("1_i00f4")
 tile_id = 8
 building_name = "Solar Panel"
 building_hp = 25
-building_tooltip = "Generates Energy"
-building_cost = 75
+building_tooltip = "Slowly Generates Energy"
+building_cost = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(32, 30)

@@ -30,7 +30,8 @@ script = ExtResource("1_7phsk")
 tile_id = 7
 building_name = "Pollution Filter"
 building_hp = 25
-building_tooltip = "Filters Pollution"
+building_tooltip = "Decreases Pollution"
+building_cost = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(31, 37)
