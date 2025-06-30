@@ -101,9 +101,9 @@ func create_wave():
 	EnemyContainer.wave_standby = 0
 
 func _on_enemy_container_wave_end() -> void:
-	#next_wave_button.disabled = false
-	#for buttons in buldings_button:
-		#buttons.disabled = false
+	next_wave_button.disabled = false
+	for buttons in buldings_button:
+		buttons.disabled = false
 	pass
 
 func _on_path_update_timer_timeout() -> void:

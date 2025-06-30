@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6num1hrus3"]
+[gd_scene load_steps=10 format=3 uid="uid://c6num1hrus3"]
 
+[ext_resource type="Script" uid="uid://dul4xvw114uwk" path="res://scenes/buildings/buildings_script.gd" id="1_a5fwa"]
 [ext_resource type="Texture2D" uid="uid://bqj7k1cp6j4cv" path="res://sprite/pollution-filter-w-funnel/tile000.png" id="1_cdflo"]
 [ext_resource type="Texture2D" uid="uid://dan1hhpgsycj4" path="res://sprite/pollution-filter-w-funnel/tile001.png" id="2_mscor"]
 [ext_resource type="Texture2D" uid="uid://ce44ha3eo3ex8" path="res://sprite/pollution-filter-w-funnel/tile002.png" id="3_n2h1d"]
+[ext_resource type="PackedScene" uid="uid://d3m3dh2eyx35i" path="res://scenes/health_component.tscn" id="5_p5dbm"]
+[ext_resource type="Script" uid="uid://nkhpo65ujp6h" path="res://scenes/buildings_health_component.gd" id="6_l4op8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdflo"]
 size = Vector2(48, 48)
@@ -24,10 +27,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ykwa"]
+size = Vector2(48, 48)
+
 [node name="Pollution Filter" type="StaticBody2D"]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_a5fwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 3
@@ -38,3 +45,16 @@ scale = Vector2(0.062, 0.062)
 sprite_frames = SubResource("SpriteFrames_a5fwa")
 autoplay = "default"
 frame_progress = 0.512559
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("5_p5dbm")]
+script = ExtResource("6_l4op8")
+agent = NodePath("..")
+tile_position = Vector2i(0, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="hitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_5ykwa")
+debug_color = Color(0.969649, 0, 0.459968, 0.42)

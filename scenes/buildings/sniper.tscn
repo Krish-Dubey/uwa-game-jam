@@ -1,18 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc3buixp5hk8k"]
+[gd_scene load_steps=12 format=3 uid="uid://dc3buixp5hk8k"]
 
+[ext_resource type="Script" uid="uid://dul4xvw114uwk" path="res://scenes/buildings/buildings_script.gd" id="1_4l32l"]
 [ext_resource type="Script" uid="uid://qfm11nxqsf5j" path="res://scripts/turret.gd" id="1_sj35t"]
 [ext_resource type="PackedScene" uid="uid://dsbks4nx3r4da" path="res://scenes/bullet.tscn" id="2_8hc4f"]
 [ext_resource type="Texture2D" uid="uid://cxyq6ffrksruy" path="res://sprite/sniper/gun.png" id="3_032v5"]
 [ext_resource type="Texture2D" uid="uid://2nga6qau1ih8" path="res://sprite/platform.png" id="4_4l32l"]
 [ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="5_4gxho"]
 [ext_resource type="Texture2D" uid="uid://cyyvlws3nbkmy" path="res://sprite/sniper/base.png" id="6_eul8g"]
+[ext_resource type="PackedScene" uid="uid://d3m3dh2eyx35i" path="res://scenes/health_component.tscn" id="8_4gxho"]
+[ext_resource type="Script" uid="uid://nkhpo65ujp6h" path="res://scenes/buildings_health_component.gd" id="9_eul8g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sj35t"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ib20k"]
 size = Vector2(48, 48)
 
 [node name="sniper" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_4l32l")
 
 [node name="Turret" type="Node2D" parent="." node_paths=PackedStringArray("projectile_spawn_position")]
 position = Vector2(0, -10.935)
@@ -52,3 +59,16 @@ texture = ExtResource("6_eul8g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 3
 shape = SubResource("RectangleShape2D_sj35t")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("8_4gxho")]
+script = ExtResource("9_eul8g")
+agent = NodePath("..")
+tile_position = Vector2i(0, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="hitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ib20k")
+debug_color = Color(0.969649, 0, 0.459968, 0.42)

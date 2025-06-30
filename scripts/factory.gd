@@ -6,6 +6,7 @@ extends Node2D
 @onready var PlayerEconomy = $"../../../PlayerNode/PlayerEconomy"
 var EnemyContainer : Node
 @onready var NextWaveButton = SpawnNode.next_wave_button
+@onready var health_component = $HealthComponent
 
 func _ready():
 	EnemyContainer = SpawnNode.get_children()[2]

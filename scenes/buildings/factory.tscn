@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://nhig576y7io5"]
+[gd_scene load_steps=22 format=3 uid="uid://nhig576y7io5"]
 
 [ext_resource type="Script" uid="uid://cgjvtrbvtnl2f" path="res://scripts/factory.gd" id="1_rg5sd"]
 [ext_resource type="Texture2D" uid="uid://3u41qwl4qsoq" path="res://sprite/factory/tile000.png" id="1_t42rk"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://bx7wjh3l7yk0k" path="res://sprite/factory/tile012.png" id="13_vwd2p"]
 [ext_resource type="Texture2D" uid="uid://desi04x71obxl" path="res://sprite/factory/tile013.png" id="14_ose3h"]
 [ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="15_joydy"]
+[ext_resource type="PackedScene" uid="uid://d3m3dh2eyx35i" path="res://scenes/health_component.tscn" id="17_2natp"]
+[ext_resource type="Script" uid="uid://nkhpo65ujp6h" path="res://scenes/buildings_health_component.gd" id="18_ptttb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_phh5w"]
 animations = [{
@@ -70,6 +72,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rg5sd"]
 size = Vector2(48, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vw2rb"]
+size = Vector2(48, 48)
+
 [node name="factory" type="StaticBody2D"]
 scale = Vector2(0.8, 0.8)
 collision_layer = 4
@@ -93,3 +98,16 @@ texture = ExtResource("15_joydy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 3
 shape = SubResource("RectangleShape2D_rg5sd")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("17_2natp")]
+script = ExtResource("18_ptttb")
+agent = NodePath("..")
+tile_position = Vector2i(0, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="hitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vw2rb")
+debug_color = Color(0.969649, 0, 0.459968, 0.42)

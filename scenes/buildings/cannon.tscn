@@ -1,18 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7yvcfgxau8tq"]
+[gd_scene load_steps=12 format=3 uid="uid://b7yvcfgxau8tq"]
 
+[ext_resource type="Script" uid="uid://dul4xvw114uwk" path="res://scenes/buildings/buildings_script.gd" id="1_3x6yl"]
 [ext_resource type="Script" uid="uid://qfm11nxqsf5j" path="res://scripts/turret.gd" id="1_0285d"]
 [ext_resource type="PackedScene" uid="uid://dsbks4nx3r4da" path="res://scenes/bullet.tscn" id="2_22shy"]
 [ext_resource type="Texture2D" uid="uid://dltn6te2w4hqc" path="res://sprite/cannon.png" id="3_8ssa1"]
 [ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="4_5saov"]
 [ext_resource type="Texture2D" uid="uid://2nga6qau1ih8" path="res://sprite/platform.png" id="5_uvlre"]
 [ext_resource type="PackedScene" uid="uid://d3m3dh2eyx35i" path="res://scenes/health_component.tscn" id="6_mvx3v"]
+[ext_resource type="Script" uid="uid://nkhpo65ujp6h" path="res://scenes/buildings_health_component.gd" id="8_ms2b3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k30nv"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1us3j"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x6yl"]
 size = Vector2(48, 48)
 
 [node name="cannon" type="StaticBody2D" groups=["buildings"]]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_3x6yl")
 
 [node name="Turret" type="Node2D" parent="." node_paths=PackedStringArray("projectile_spawn_position")]
 y_sort_enabled = true
@@ -55,4 +64,18 @@ z_index = 3
 shape = SubResource("RectangleShape2D_k30nv")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("6_mvx3v")]
+script = ExtResource("8_ms2b3")
 agent = NodePath("..")
+tile_position = Vector2i(0, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="hitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1us3j")
+debug_color = Color(0.969649, 0, 0.459968, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+z_index = 3
+shape = SubResource("RectangleShape2D_3x6yl")
