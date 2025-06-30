@@ -12,15 +12,19 @@ extends Marker2D
 @export var buldings_button : Array[Button]
 @export var placement_script : Node
 
+var categories_string = ["common", "uncommon", "rare", "boss"]
 var rng = RandomNumberGenerator.new()
 
 signal new_wave
 
 var currentWave = 0
 var currentBasePoints = 5
-var enemy_list = []
-var common_enemy_list = []
 var enemy_wave = []
+
+var common_cutoff = 0
+var uncommon_cutoff = 95
+var rare_cutoff = 105
+var boss_cutoff = 110
 
 var astar_grid: AStarGrid2D
 var id_path
@@ -33,7 +37,7 @@ func _ready() -> void:
 	astar_grid.Heuristic.HEURISTIC_EUCLIDEAN
 	astar_grid.update()
 	update_astar_path()
-	enemy_list = EnemyInfo.loadAllEnemies()
+	EnemyInfo.loadAllEnemies()
 
 func update_astar_path():
 	astar_grid.clear()  # clears all points and solid data
@@ -87,15 +91,44 @@ func create_wave():
 	update_astar_path()
 	SpawnTimer.start()
 	currentWave += 1
-	var currentPoint = currentBasePoints + currentWave
+	var currentPoint = currentBasePoints + currentWave + PlayerEconomy.PollutionLevel
+	uncommon_cutoff -= (PlayerEconomy.PollutionLevel - 1)
+	rare_cutoff -= (PlayerEconomy.PollutionLevel - 1)
+	
+	if currentWave == 10:
+		boss_cutoff -= 10
+	elif currentWave % 10 == 0:
+		boss_cutoff -= 5
+	
 	wave_label.text = "Waves : " + str(currentWave)
-	var common_list = EnemyInfo.getCategory("common")
-	var boss_list = EnemyInfo.getCategory("boss")
-		
+	
 	while currentPoint > 0:
-		enemy_wave.append(EnemyInfo.LoadedEnemies[rng.randi_range(0, EnemyInfo.LoadedEnemies.size() - 1)])
-		currentPoint -= 1
+		var random_number = rng.randi_range(0, 100)
+		var target_category = -1
+		var can_spawn = 0
+		var category_to_spawn
 		
+		if random_number > boss_cutoff:
+			target_category = 3
+		elif random_number > rare_cutoff:
+			target_category = 2
+		elif random_number > uncommon_cutoff:
+			target_category = 1
+		else:
+			target_category = 0 
+		
+		while can_spawn == 0:
+			for enemy in EnemyInfo.getCategory(categories_string[target_category]):
+				if enemy[1] <= currentPoint:
+					can_spawn = 1 
+					category_to_spawn = EnemyInfo.getCategory()
+					break
+			target_category -= 1 # Can't find anything to spawn going down a level. Common is guaranteed to spawn something!
+		
+		var random_enemy = rng.randi_range(0, category_to_spawn.size() - 1)
+		
+		enemy_wave.append(EnemyInfo.LoadedEnemies[category_to_spawn[random_enemy][0]])
+		currentPoint -= category_to_spawn[random_enemy][1]
 	
 	new_wave.emit()
 	next_wave_button.disabled = true

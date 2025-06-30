@@ -53,10 +53,6 @@ var EnemiesCategoryIndex = {
 }
 
 func loadAllEnemies():
-	for enemy in EnemiesList:
-		enemy["loadIndex"] = LoadedEnemies.size()
-		LoadedEnemies.append(load(enemy["resourcePath"]))
-		EnemiesCategoryIndex[enemy["rarity"]].append(enemy["loadIndex"])
 	return EnemiesList
 	
 func getEnemiesPackedNode(index):
@@ -64,3 +60,9 @@ func getEnemiesPackedNode(index):
 
 func getCategory(category):
 	return EnemiesCategoryIndex[category]
+
+func _ready() -> void:
+	for enemy in EnemiesList:
+		enemy["loadIndex"] = LoadedEnemies.size()
+		LoadedEnemies.append(load(enemy["resourcePath"]))
+		EnemiesCategoryIndex[enemy["rarity"]].append([enemy["loadIndex"], enemy["cost"]])
