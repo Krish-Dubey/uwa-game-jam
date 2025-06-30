@@ -31,6 +31,7 @@ animations = [{
 [node name="turret" type="Node2D" parent="." node_paths=PackedStringArray("projectile_spawn_position")]
 position = Vector2(0, -9.32)
 script = ExtResource("1_c5x4l")
+pollution = 0.0
 bullet_scene = ExtResource("2_10c8u")
 projectile_spawn_position = NodePath("ProjectileSpawnPosition")
 

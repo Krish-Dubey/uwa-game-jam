@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://nhig576y7io5"]
+[gd_scene load_steps=18 format=3 uid="uid://nhig576y7io5"]
 
+[ext_resource type="Script" uid="uid://cgjvtrbvtnl2f" path="res://scripts/factory.gd" id="1_rg5sd"]
 [ext_resource type="Texture2D" uid="uid://3u41qwl4qsoq" path="res://sprite/factory/tile000.png" id="1_t42rk"]
 [ext_resource type="Texture2D" uid="uid://b8xljeas4baub" path="res://sprite/factory/tile001.png" id="2_rg5sd"]
 [ext_resource type="Texture2D" uid="uid://vbragpy7rt3h" path="res://sprite/factory/tile002.png" id="3_dd52h"]
@@ -68,6 +69,7 @@ animations = [{
 
 [node name="factory" type="Node2D"]
 scale = Vector2(0.8, 0.8)
+script = ExtResource("1_rg5sd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1

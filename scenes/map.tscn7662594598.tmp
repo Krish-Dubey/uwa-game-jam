@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=38 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://sprite/punyworld-overworld-tileset.png" id="1_2lpho"]
 [ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/buildings/gatling_gun.tscn" id="2_nakos"]
@@ -11,19 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://dc3buixp5hk8k" path="res://scenes/buildings/sniper.tscn" id="6_c00ee"]
 [ext_resource type="Script" uid="uid://bimc0rfprmy7v" path="res://scripts/enemy_info.gd" id="6_nakos"]
 [ext_resource type="PackedScene" uid="uid://nhig576y7io5" path="res://scenes/buildings/factory.tscn" id="7_c70he"]
-[ext_resource type="PackedScene" uid="uid://c6num1hrus3" path="res://scenes/buildings/pollution_filter.tscn" id="8_4b7dj"]
-[ext_resource type="PackedScene" uid="uid://bxj0s3q4c3wj3" path="res://scenes/buildings/solar_panel.tscn" id="9_2cfcp"]
 [ext_resource type="PackedScene" uid="uid://kekudgb61vu8" path="res://scenes/buildings/ui_crossbow.tscn" id="9_blm8a"]
 [ext_resource type="PackedScene" uid="uid://c2gfat4iqh5xk" path="res://scenes/buildings/ui_wall.tscn" id="9_mlgqr"]
 [ext_resource type="Script" uid="uid://47hdxw02w2yf" path="res://scenes/economy.gd" id="9_mo32q"]
 [ext_resource type="PackedScene" uid="uid://bvap245prb28r" path="res://scenes/buildings/ui_gatling_gun.tscn" id="10_mlgqr"]
-[ext_resource type="Script" uid="uid://byluuxwk7m40e" path="res://scenes/building_info_ui.gd" id="12_mo32q"]
-[ext_resource type="Script" uid="uid://pyre2w6xvvwv" path="res://scenes/enemy_container.gd" id="12_6k6j1"]
 [ext_resource type="PackedScene" uid="uid://bahpg4a8ojpee" path="res://scenes/buildings/ui_cannon.tscn" id="13_gw3fx"]
 [ext_resource type="PackedScene" uid="uid://cvrxj85vd67oc" path="res://scenes/buildings/ui_sniper.tscn" id="15_p7tei"]
 [ext_resource type="PackedScene" uid="uid://cqjuu8yn6hh26" path="res://scenes/buildings/ui_factory.tscn" id="17_mo32q"]
-[ext_resource type="PackedScene" uid="uid://bu0eksit6w4yt" path="res://scenes/buildings/ui_pollution_filter.tscn" id="19_m335s"]
-[ext_resource type="PackedScene" uid="uid://d16vdrilnng6j" path="res://scenes/buildings/ui_solar_panel.tscn" id="20_sq6bu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c7s6e"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -1681,8 +1675,6 @@ scenes/3/scene = ExtResource("4_blm8a")
 scenes/4/scene = ExtResource("5_wslke")
 scenes/5/scene = ExtResource("6_c00ee")
 scenes/6/scene = ExtResource("7_c70he")
-scenes/7/scene = ExtResource("8_4b7dj")
-scenes/8/scene = ExtResource("9_2cfcp")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mlgqr"]
 
@@ -1763,22 +1755,15 @@ shape = SubResource("RectangleShape2D_urblq")
 [node name="PlayerEconomy" type="Node" parent="PlayerNode"]
 script = ExtResource("9_mo32q")
 
-[node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("EnemyInfo", "SpawnTimer", "PlayerEconomy", "EnemyContainer", "target", "road_tile_map_", "placement_tile", "wave_label", "next_wave_button", "buldings_button", "placement_script")]
+[node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("target", "road_tile_map_", "placement_tile", "wave_label")]
 top_level = true
 position = Vector2(-23, 120)
 gizmo_extents = 29.0
 script = ExtResource("4_be0no")
-EnemyInfo = NodePath("EnemyInfo")
-SpawnTimer = NodePath("SpawnTimer")
-PlayerEconomy = NodePath("../PlayerNode/PlayerEconomy")
-EnemyContainer = NodePath("EnemyContainer")
 target = NodePath("../PlayerNode/EndPath")
 road_tile_map_ = NodePath("../tilemap/Road")
 placement_tile = NodePath("../tilemap/PlacementTile")
 wave_label = NodePath("../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2/Label")
-next_wave_button = NodePath("../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2/Button")
-buldings_button = [NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui/AspectRatioContainer/ui_wall"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui2/AspectRatioContainer/ui_gatling_gun"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui3/AspectRatioContainer/ui_crossbow"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui4/AspectRatioContainer/ui_cannon"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui5/AspectRatioContainer/ui_sniper"), NodePath("../UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui/AspectRatioContainer/ui_factory")]
-placement_script = NodePath("../PlacementScript")
 
 [node name="SpawnTimer" type="Timer" parent="Spawn"]
 process_callback = 0
@@ -1788,14 +1773,10 @@ autostart = true
 script = ExtResource("6_nakos")
 metadata/_custom_type_script = "uid://bimc0rfprmy7v"
 
-[node name="EnemyContainer" type="Node" parent="Spawn"]
-script = ExtResource("12_6k6j1")
-
-[node name="PlacementScript" type="Node2D" parent="." node_paths=PackedStringArray("tile_map", "road_tile_map", "PlayerEconomy")]
+[node name="PlacementScript" type="Node2D" parent="." node_paths=PackedStringArray("tile_map", "road_tile_map")]
 script = ExtResource("5_blm8a")
 tile_map = NodePath("../tilemap/PlacementTile")
 road_tile_map = NodePath("../tilemap/Road")
-PlayerEconomy = NodePath("../PlayerNode/PlayerEconomy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 286)
@@ -1847,7 +1828,7 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(0.252028, 0.252028, 0.252028, 1)
 
-[node name="UI Top Right" type="Control" parent="UI" node_paths=PackedStringArray("label_name", "label_hp", "label_dmg", "label_tooltip", "label_cost")]
+[node name="UI Top Right" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -1855,12 +1836,6 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
-script = ExtResource("12_mo32q")
-label_name = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/building_label")
-label_hp = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer3/hp_value")
-label_dmg = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer4/dmg_value")
-label_tooltip = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer4/Tooltip")
-label_cost = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer6/cost_value")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/UI Top Right"]
 layout_mode = 1
@@ -1922,11 +1897,9 @@ theme_override_constants/margin_bottom = 3
 layout_mode = 2
 stretch_mode = 1
 
-[node name="ui_wall" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui/AspectRatioContainer" node_paths=PackedStringArray("placement_script", "info_ui") instance=ExtResource("9_mlgqr")]
+[node name="ui_wall" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui/AspectRatioContainer" node_paths=PackedStringArray("placement_script") instance=ExtResource("9_mlgqr")]
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
-info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui2" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox"]
 layout_mode = 2
@@ -1939,11 +1912,9 @@ theme_override_constants/margin_bottom = 3
 layout_mode = 2
 stretch_mode = 0
 
-[node name="ui_gatling_gun" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui2/AspectRatioContainer" node_paths=PackedStringArray("placement_script", "info_ui") instance=ExtResource("10_mlgqr")]
+[node name="ui_gatling_gun" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui2/AspectRatioContainer" node_paths=PackedStringArray("placement_script") instance=ExtResource("10_mlgqr")]
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
-info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui3" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox"]
 layout_mode = 2
@@ -1956,11 +1927,9 @@ theme_override_constants/margin_bottom = 3
 layout_mode = 2
 stretch_mode = 1
 
-[node name="ui_crossbow" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui3/AspectRatioContainer" node_paths=PackedStringArray("placement_script", "info_ui") instance=ExtResource("9_blm8a")]
+[node name="ui_crossbow" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui3/AspectRatioContainer" node_paths=PackedStringArray("placement_script") instance=ExtResource("9_blm8a")]
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
-info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui4" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox"]
 layout_mode = 2
@@ -1973,11 +1942,9 @@ theme_override_constants/margin_bottom = 3
 layout_mode = 2
 stretch_mode = 1
 
-[node name="ui_cannon" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui4/AspectRatioContainer" node_paths=PackedStringArray("placement_script", "info_ui") instance=ExtResource("13_gw3fx")]
+[node name="ui_cannon" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui4/AspectRatioContainer" node_paths=PackedStringArray("placement_script") instance=ExtResource("13_gw3fx")]
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
-info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
 
 [node name="turret btn ui5" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox"]
 layout_mode = 2
@@ -1990,10 +1957,9 @@ theme_override_constants/margin_bottom = 3
 layout_mode = 2
 stretch_mode = 1
 
-[node name="ui_sniper" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui5/AspectRatioContainer" node_paths=PackedStringArray("placement_script", "info_ui") instance=ExtResource("15_p7tei")]
+[node name="ui_sniper" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defense Building Container/VBox/turret btn ui5/AspectRatioContainer" node_paths=PackedStringArray("placement_script") instance=ExtResource("15_p7tei")]
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
-info_ui = NodePath("../../../../../../../../..")
 
 [node name="Logistic Buildings Container" type="PanelContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -2013,50 +1979,15 @@ theme_override_constants/margin_bottom = 3
 layout_mode = 2
 stretch_mode = 1
 
-[node name="ui_factory" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui/AspectRatioContainer" node_paths=PackedStringArray("placement_script", "info_ui") instance=ExtResource("17_mo32q")]
+[node name="ui_factory" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui/AspectRatioContainer" node_paths=PackedStringArray("placement_script") instance=ExtResource("17_mo32q")]
 layout_mode = 2
 placement_script = NodePath("../../../../../../../../../../../PlacementScript")
-info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
-
-[node name="turret btn ui2" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX"]
-layout_mode = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui2"]
-layout_mode = 2
-stretch_mode = 1
-
-[node name="ui_pollution_filter" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui2/AspectRatioContainer" node_paths=PackedStringArray("placement_script", "info_ui") instance=ExtResource("19_m335s")]
-layout_mode = 2
-placement_script = NodePath("../../../../../../../../../../../PlacementScript")
-info_ui = NodePath("../../../../../../../../..")
-building_cost = 0
-
-[node name="turret btn ui3" type="MarginContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX"]
-layout_mode = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui3"]
-layout_mode = 2
-stretch_mode = 1
-
-[node name="ui_solar_panel" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Logistic Buildings Container/VBOX/turret btn ui3/AspectRatioContainer" node_paths=PackedStringArray("placement_script", "info_ui") instance=ExtResource("20_sq6bu")]
-layout_mode = 2
-placement_script = NodePath("../../../../../../../../../../../PlacementScript")
-info_ui = NodePath("../../../../../../../../..")
 
 [node name="PanelContainer2" type="PanelContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c70he")
 
-[node name="building_label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2"]
+[node name="Label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
 text = "Hover on Building"
 horizontal_alignment = 1
@@ -2069,7 +2000,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mo32q")
 
-[node name="hp_label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+[node name="Label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
 layout_mode = 2
 text = "HP"
 horizontal_alignment = 1
@@ -2079,7 +2010,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_6k6j1")
 
-[node name="dmg_label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2"]
+[node name="Label2" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2"]
 layout_mode = 2
 text = "DMG"
 horizontal_alignment = 1
@@ -2092,7 +2023,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_m335s")
 
-[node name="hp_value" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer3"]
+[node name="Label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer3"]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
@@ -2102,7 +2033,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_sq6bu")
 
-[node name="dmg_value" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer4"]
+[node name="Label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer4"]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
@@ -2112,35 +2043,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_sq6bu")
 
-[node name="Tooltip" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer4"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer4"]
 layout_mode = 2
 horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="PanelContainer5" type="PanelContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_sq6bu")
-
-[node name="cost_label" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer5"]
-layout_mode = 2
-text = "COST"
-horizontal_alignment = 1
-autowrap_mode = 2
-justification_flags = 161
-
-[node name="PanelContainer6" type="PanelContainer" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_sq6bu")
-
-[node name="cost_value" type="Label" parent="UI/UI Top Right/PanelContainer/MarginContainer/VBoxContainer/PanelContainer6"]
-layout_mode = 2
-horizontal_alignment = 1
-autowrap_mode = 2
 
 [connection signal="body_entered" from="PlayerNode/EndPath/Area2D" to="PlayerNode/EndPath/Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Spawn/SpawnTimer" to="Spawn" method="_on_spawn_timer_timeout"]
-[connection signal="wave_end" from="Spawn/EnemyContainer" to="Spawn" method="_on_enemy_container_wave_end"]
 [connection signal="pressed" from="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2/Button" to="Spawn" method="create_wave"]

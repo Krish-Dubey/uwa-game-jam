@@ -13,6 +13,7 @@
 position = Vector2(0, -10.935)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_4sggw")
+pollution = 25.0
 bullet_scene = ExtResource("2_8nifh")
 projectile_spawn_position = NodePath("ProjectileSpawnPosition")
 

@@ -35,6 +35,5 @@ func _physics_process(delta: float) -> void:
 	
 	var new_velocity = global_position.direction_to(target_position) * movement_speed
 	velocity = new_velocity
-	
 
 	move_and_slide()

@@ -2,6 +2,8 @@ Button
 Panel
 Sprite2D
 AnimatedSprite2D
+Node
+Node2D
 PanelContainer
 Label
 HBoxContainer
@@ -10,5 +12,3 @@ MarginContainer
 RayCast2D
 VScrollBar
 Control
-Node
-Node2D
