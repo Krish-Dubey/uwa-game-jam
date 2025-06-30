@@ -15,8 +15,8 @@ tile_id = 5
 building_name = "Sniper"
 building_hp = 100
 building_dmg = 10
-building_tooltip = "Long Range Turret"
-building_cost = 350
+building_tooltip = "Long Range Railgun, Devastate all."
+building_cost = 1000
 
 [node name="Turret" type="Node2D" parent="."]
 position = Vector2(30.801, 25.025)

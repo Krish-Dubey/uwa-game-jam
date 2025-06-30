@@ -5,7 +5,7 @@ extends Node
 @export var EnergyText : Label
 @export var PollutionText : Label
 
-var ConstructionCash = 1500
+var ConstructionCash = 1000
 var EnergyGenerated = 0
 var CurrentPollution = 0
 
