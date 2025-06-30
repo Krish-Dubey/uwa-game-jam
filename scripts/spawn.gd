@@ -121,7 +121,7 @@ func create_wave():
 			for enemy in EnemyInfo.getCategory(categories_string[target_category]):
 				if enemy[1] <= currentPoint:
 					can_spawn = 1 
-					category_to_spawn = EnemyInfo.getCategory()
+					category_to_spawn = EnemyInfo.getCategory(categories_string[target_category])
 					break
 			target_category -= 1 # Can't find anything to spawn going down a level. Common is guaranteed to spawn something!
 		
