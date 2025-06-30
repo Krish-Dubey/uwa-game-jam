@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chkg13dto4xne"]
+[gd_scene load_steps=19 format=3 uid="uid://chkg13dto4xne"]
 
 [ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_tlqob"]
 [ext_resource type="Script" uid="uid://bhcycc38peq4c" path="res://scripts/health_component.gd" id="3_34tvn"]
@@ -63,17 +63,13 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyin3"]
+
 [node name="LargeWalker" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_tlqob")
 movement_speed = 100.0
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_postprocessing = 2
-path_metadata_flags = 5
-time_horizon_agents = 3.0
-debug_path_custom_color = Color(0, 1, 1, 1)
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("agent")]
 script = ExtResource("3_34tvn")
@@ -100,3 +96,6 @@ z_index = -1
 position = Vector2(-6.57706e-05, 344.828)
 scale = Vector2(20.944, 20.944)
 texture = ExtResource("15_u640h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pyin3")

@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://2mnohr3c7wvu"]
+
+[ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_lytlq"]
+[ext_resource type="Texture2D" uid="uid://bd1vbmpn742wf" path="res://sprite/ant/tile000.png" id="1_ne3mj"]
+[ext_resource type="Texture2D" uid="uid://0ysj80gdy2be" path="res://sprite/ant/tile001.png" id="2_lytlq"]
+[ext_resource type="Texture2D" uid="uid://vovcpq27ywae" path="res://sprite/ant/tile002.png" id="3_w8akw"]
+[ext_resource type="Texture2D" uid="uid://f6y7x436sdp4" path="res://sprite/ant/tile003.png" id="4_dy3wq"]
+[ext_resource type="Texture2D" uid="uid://bscfog4wrw61i" path="res://sprite/ant/tile004.png" id="5_si1gi"]
+[ext_resource type="Texture2D" uid="uid://cb7eh1p7hibon" path="res://sprite/ant/tile005.png" id="6_gdotf"]
+[ext_resource type="Texture2D" uid="uid://cao1swlsnt4wd" path="res://sprite/ant/tile006.png" id="7_k1mt7"]
+[ext_resource type="Texture2D" uid="uid://clty047qigexk" path="res://sprite/ant/tile007.png" id="8_c3qnw"]
+[ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="9_ew2li"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crhd5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ne3mj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lytlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w8akw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dy3wq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_si1gi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gdotf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k1mt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c3qnw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ddoc"]
+size = Vector2(24.6154, 24.6154)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jfybq"]
+radius = 17.0797
+
+[node name="ant" type="CharacterBody2D" node_paths=PackedStringArray("damage_timer")]
+script = ExtResource("1_lytlq")
+damage_timer = NodePath("Area2D2/Timer")
+movement_speed = 300.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.029, 0.029)
+sprite_frames = SubResource("SpriteFrames_crhd5")
+autoplay = "default"
+frame_progress = 0.0324984
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatedSprite2D"]
+z_index = -1
+position = Vector2(-6.57706e-05, 344.828)
+scale = Vector2(20.944, 20.944)
+texture = ExtResource("9_ew2li")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Hit Box" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.75098e-07, -2.75098e-07)
+shape = SubResource("RectangleShape2D_4ddoc")
+debug_color = Color(0.968513, 0, 0.46738, 0.42)
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Hurt Box" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_jfybq")
+debug_color = Color(0.65427, 0.517664, 7.70092e-07, 0.42)
+
+[node name="Timer" type="Timer" parent="Area2D2"]
+
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]

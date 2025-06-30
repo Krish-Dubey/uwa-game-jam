@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		min_distance = global_position.distance_to(target_position) 
 		if min_distance < 10:
 			path_id += 1
-	print(path.size())
+	#print(path.size())
 	if path.size() > 0:
 		var new_velocity = global_position.direction_to(target_position) * movement_speed
 		velocity = new_velocity

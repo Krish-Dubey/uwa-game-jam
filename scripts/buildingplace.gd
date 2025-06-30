@@ -67,7 +67,7 @@ func place_building(id):
 		for child in tile_map.get_children():
 			var map_pos = tile_map.local_to_map(child.position)
 			if map_pos == tile_mouse_pos:
-				print("✓ Scene found at:", tile_mouse_pos, "→", child)
+				#print("Scene found at:", tile_mouse_pos, ">", child)
 				tile_to_scene[tile_mouse_pos] = child
 				if child.has_node("HealthComponent"):
 					var hc = child.get_node("HealthComponent")

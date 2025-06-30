@@ -21,7 +21,14 @@ var EnemiesList = [
 		"resourcePath": "res://scenes/enemies/largewalker.tscn",
 		"cost" : 2,
 		"rarity" : "common"
+	},
+	{
+		"enemyName": "Flyers",
+		"resourcePath": "res://scenes/enemies/flyers.tscn",
+		"cost" : 1,
+		"rarity" : "common"
 	}
+	
 ]
 
 var LoadedEnemies = []
