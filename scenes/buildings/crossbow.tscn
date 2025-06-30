@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ys8v2binagg6"]
+[gd_scene load_steps=11 format=3 uid="uid://ys8v2binagg6"]
 
 [ext_resource type="Script" uid="uid://qfm11nxqsf5j" path="res://scripts/turret.gd" id="1_c5x4l"]
 [ext_resource type="Texture2D" uid="uid://clsxs8e3anusb" path="res://sprite/crossbow/tile000.png" id="1_ym1yd"]
@@ -26,7 +26,12 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="crossbow" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82m5r"]
+size = Vector2(48, 48)
+
+[node name="crossbow" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="turret" type="Node2D" parent="." node_paths=PackedStringArray("projectile_spawn_position")]
 position = Vector2(0, -9.32)
@@ -59,3 +64,7 @@ texture = ExtResource("5_qpyub")
 position = Vector2(0, 27.65)
 scale = Vector2(0.916667, 0.1)
 texture = ExtResource("8_82m5r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 3
+shape = SubResource("RectangleShape2D_82m5r")

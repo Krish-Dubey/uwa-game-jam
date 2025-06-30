@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://nhig576y7io5"]
+[gd_scene load_steps=19 format=3 uid="uid://nhig576y7io5"]
 
 [ext_resource type="Script" uid="uid://cgjvtrbvtnl2f" path="res://scripts/factory.gd" id="1_rg5sd"]
 [ext_resource type="Texture2D" uid="uid://3u41qwl4qsoq" path="res://sprite/factory/tile000.png" id="1_t42rk"]
@@ -67,8 +67,13 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="factory" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg5sd"]
+size = Vector2(48, 48)
+
+[node name="factory" type="StaticBody2D"]
 scale = Vector2(0.8, 0.8)
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_rg5sd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -84,3 +89,7 @@ z_index = -1
 position = Vector2(-7.6, 237.77)
 scale = Vector2(12.385, 22.085)
 texture = ExtResource("15_joydy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 3
+shape = SubResource("RectangleShape2D_rg5sd")

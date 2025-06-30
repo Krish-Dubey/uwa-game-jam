@@ -36,26 +36,36 @@ func _ready() -> void:
 	enemy_list = EnemyInfo.loadAllEnemies()
 
 func update_astar_path():
-	id_path = astar_grid.get_id_path(
-		road_tile_map_.local_to_map(global_position),
-		road_tile_map_.local_to_map(target.global_position)
-	).slice(1)
-	
-	for x in road_tile_map_.get_used_rect().size.x:
-		for y in road_tile_map_.get_used_rect().size.y:
+	astar_grid.clear()  # clears all points and solid data
+
+	astar_grid.region = road_tile_map_.get_used_rect()
+	astar_grid.cell_size = Vector2(16, 16)
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
+	astar_grid.update()  # repopulate the grid
+
+	var start = road_tile_map_.local_to_map(global_position)
+	var end = road_tile_map_.local_to_map(target.global_position)
+
+	# Now mark unwalkable tiles again
+	var used_rect = road_tile_map_.get_used_rect()
+	for x in range(used_rect.size.x):
+		for y in range(used_rect.size.y):
 			var tile_position = Vector2i(
-				x + road_tile_map_.get_used_rect().position.x,
-				y + road_tile_map_.get_used_rect().position.y
-				)
+				x + used_rect.position.x,
+				y + used_rect.position.y
+			)
 			var tile_data = road_tile_map_.get_cell_tile_data(tile_position)
-			
 			if tile_data == null or tile_data.get_custom_data("unwalkable"):
-				astar_grid.set_point_solid(tile_position)
-				
-	var coordinates_ = placement_tile.get_used_cells()
-	for coordinate in coordinates_.size():
-		var coordinates = placement_tile.get_used_cells()
-		astar_grid.set_point_solid(coordinates[coordinate])
+				if tile_position != start and tile_position != end:
+					astar_grid.set_point_solid(tile_position)
+
+	# Re-mark placement tiles (towers)
+	for tile in placement_tile.get_used_cells():
+		if tile != start and tile != end:
+			astar_grid.set_point_solid(tile)
+
+	# Compute path again
+	id_path = astar_grid.get_id_path(start, end).slice(1)
 	
 func spawn_enemy(enemy_packed_scene) -> void:
 	update_astar_path()
@@ -91,6 +101,14 @@ func create_wave():
 	EnemyContainer.wave_standby = 0
 
 func _on_enemy_container_wave_end() -> void:
-	next_wave_button.disabled = false
-	for buttons in buldings_button:
-		buttons.disabled = false
+	#next_wave_button.disabled = false
+	#for buttons in buldings_button:
+		#buttons.disabled = false
+	pass
+
+func _on_path_update_timer_timeout() -> void:
+	#print(id_path)
+	update_astar_path()
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		enemy.path = id_path
+	pass # Replace with function body.

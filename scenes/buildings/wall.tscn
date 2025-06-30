@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6c7akk0h1cy0"]
+[gd_scene load_steps=8 format=3 uid="uid://b6c7akk0h1cy0"]
 
+[ext_resource type="Script" uid="uid://dul4xvw114uwk" path="res://scenes/buildings/buildings_script.gd" id="1_2ksci"]
 [ext_resource type="Texture2D" uid="uid://drxskrgobsnhh" path="res://sprite/wall.png" id="1_wykyb"]
 [ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="2_gxk2j"]
+[ext_resource type="PackedScene" uid="uid://d3m3dh2eyx35i" path="res://scenes/health_component.tscn" id="3_gpfny"]
+[ext_resource type="Script" uid="uid://nkhpo65ujp6h" path="res://scenes/buildings_health_component.gd" id="5_m3q77"]
 
-[node name="wall" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxk2j"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ksci"]
+size = Vector2(48, 48)
+
+[node name="wall" type="StaticBody2D" groups=["buildings"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_2ksci")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -3.75)
@@ -14,3 +26,20 @@ texture = ExtResource("1_wykyb")
 position = Vector2(0, 27.42)
 scale = Vector2(0.916667, 0.12)
 texture = ExtResource("2_gxk2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 3
+shape = SubResource("RectangleShape2D_gxk2j")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("3_gpfny")]
+script = ExtResource("5_m3q77")
+agent = NodePath("..")
+tile_position = Vector2i(0, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="hitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2ksci")
+debug_color = Color(0.969649, 0, 0.459968, 0.42)

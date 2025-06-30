@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=52 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://sprite/punyworld-overworld-tileset.png" id="1_2lpho"]
 [ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/buildings/gatling_gun.tscn" id="2_nakos"]
@@ -1695,6 +1695,18 @@ sources/0 = SubResource("TileSetScenesCollectionSource_e0an3")
 sources/1 = SubResource("TileSetScenesCollectionSource_mlgqr")
 pattern_0 = SubResource("TileMapPattern_iw27f")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2ir2"]
+size = Vector2(1279, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5u2yt"]
+size = Vector2(185.75, 476)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30iet"]
+size = Vector2(185.75, 250.087)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkblt"]
+size = Vector2(185.75, 431.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urblq"]
 size = Vector2(69.7951, 47)
 
@@ -1758,6 +1770,46 @@ tile_set = SubResource("TileSet_e0an3")
 y_sort_enabled = true
 tile_set = SubResource("TileSet_p5pve")
 
+[node name="Border" type="StaticBody2D" parent="tilemap"]
+visible = false
+z_index = -2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tilemap/Border"]
+z_index = 2
+position = Vector2(629.5, 19)
+shape = SubResource("RectangleShape2D_y2ir2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="tilemap/Border"]
+z_index = 2
+position = Vector2(629.5, 654)
+shape = SubResource("RectangleShape2D_y2ir2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="tilemap/Border"]
+z_index = 2
+position = Vector2(-49.125, 386)
+shape = SubResource("RectangleShape2D_5u2yt")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="tilemap/Border"]
+z_index = 2
+position = Vector2(-49.125, -31.0437)
+shape = SubResource("RectangleShape2D_30iet")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="tilemap/Border"]
+z_index = 2
+position = Vector2(-234, 123)
+shape = SubResource("RectangleShape2D_mkblt")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="tilemap/Border"]
+z_index = 2
+position = Vector2(1200, 409.75)
+shape = SubResource("RectangleShape2D_mkblt")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="tilemap/Border"]
+z_index = 2
+position = Vector2(1200, -75)
+shape = SubResource("RectangleShape2D_mkblt")
+
 [node name="PlayerNode" type="Node2D" parent="."]
 
 [node name="EndPath" type="Marker2D" parent="PlayerNode"]
@@ -1807,6 +1859,10 @@ metadata/_custom_type_script = "uid://bimc0rfprmy7v"
 
 [node name="EnemyContainer" type="Node" parent="Spawn"]
 script = ExtResource("12_6k6j1")
+
+[node name="PathUpdateTimer" type="Timer" parent="Spawn"]
+wait_time = 0.25
+autostart = true
 
 [node name="PlacementScript" type="Node2D" parent="." node_paths=PackedStringArray("tile_map", "road_tile_map", "PlayerEconomy")]
 script = ExtResource("5_blm8a")
@@ -1908,6 +1964,7 @@ mouse_filter = 2
 color = Color(0.252028, 0.252028, 0.252028, 1)
 
 [node name="UI Top Right" type="Control" parent="UI" node_paths=PackedStringArray("economy_script", "label_name", "label_hp", "label_dmg", "label_tooltip", "label_cost", "label_cash")]
+z_index = 1
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -2233,4 +2290,5 @@ autowrap_mode = 2
 [connection signal="body_entered" from="PlayerNode/EndPath/Area2D" to="PlayerNode/EndPath/Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Spawn/SpawnTimer" to="Spawn" method="_on_spawn_timer_timeout"]
 [connection signal="wave_end" from="Spawn/EnemyContainer" to="Spawn" method="_on_enemy_container_wave_end"]
+[connection signal="timeout" from="Spawn/PathUpdateTimer" to="Spawn" method="_on_path_update_timer_timeout"]
 [connection signal="pressed" from="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Waves UI/Waves UI2/Button" to="Spawn" method="create_wave"]

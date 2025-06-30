@@ -23,6 +23,7 @@ window/size/viewport_height=720
 [global_group]
 
 enemy=""
+buildings=""
 
 [input]
 
@@ -41,6 +42,8 @@ right_click={
 
 2d_physics/layer_1="enemy_collision"
 2d_physics/layer_2="enemy_hitbox"
+2d_physics/layer_3="building_collision"
+2d_physics/layer_4="buildings_hitbox"
 
 [rendering]
 
