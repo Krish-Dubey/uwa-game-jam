@@ -10,7 +10,7 @@ var highlight_red_scene = preload("res://scenes/buildings/highlight_red.tscn")
 var highlight_red
 var building_id : int
 var build_mode : bool = false
-
+var tile_to_scene := {}
 var building_price : int = 0
 
 func _ready() -> void:
@@ -60,3 +60,17 @@ func place_building(id):
 	else:
 		PlayerEconomy.ConstructionCash -= building_price
 		tile_map.set_cell(tile_mouse_pos, 0, Vector2i(0,0), id)
+		
+		await get_tree().process_frame
+		await get_tree().process_frame
+
+		for child in tile_map.get_children():
+			var map_pos = tile_map.local_to_map(child.position)
+			if map_pos == tile_mouse_pos:
+				print("✓ Scene found at:", tile_mouse_pos, "→", child)
+				tile_to_scene[tile_mouse_pos] = child
+				if child.has_node("HealthComponent"):
+					var hc = child.get_node("HealthComponent")
+					hc.tile_map = tile_map
+					hc.tile_position = tile_mouse_pos
+				break

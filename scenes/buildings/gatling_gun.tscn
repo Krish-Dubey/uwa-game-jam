@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://srmb1vgmfku5"]
+[gd_scene load_steps=8 format=3 uid="uid://srmb1vgmfku5"]
 
 [ext_resource type="Script" uid="uid://qfm11nxqsf5j" path="res://scripts/turret.gd" id="1_4sggw"]
 [ext_resource type="Texture2D" uid="uid://b1jwaq06lkrgb" path="res://sprite/gatlinggun.png" id="2_4sggw"]
@@ -7,7 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bqffc62snqrff" path="res://sprite/cylinder_base.png" id="4_tbwx1"]
 [ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="6_hl485"]
 
-[node name="gatling_gun" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl485"]
+size = Vector2(48, 48)
+
+[node name="gatling_gun" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="Turret" type="Node2D" parent="." node_paths=PackedStringArray("projectile_spawn_position")]
 position = Vector2(0, -10.935)
@@ -41,3 +46,7 @@ texture = ExtResource("4_tbwx1")
 position = Vector2(0, 27.65)
 scale = Vector2(0.916667, 0.1)
 texture = ExtResource("6_hl485")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 3
+shape = SubResource("RectangleShape2D_hl485")

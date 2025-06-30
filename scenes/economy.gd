@@ -1,4 +1,4 @@
 extends Node
 
-var ConstructionCash = 500
+var ConstructionCash = 2500
 var EnergyGenerated = 0
