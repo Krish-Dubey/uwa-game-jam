@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq43sqvpip8xl"]
+
+[ext_resource type="Script" uid="uid://cww32rmivgeip" path="res://scripts/bullet.gd" id="1_j6mrw"]
+[ext_resource type="Texture2D" uid="uid://r8sm8863o5aa" path="res://sprite/gatlingbullet.png" id="2_ilh6w"]
+[ext_resource type="AudioStream" uid="uid://cnutte2rspg0x" path="res://sound/gun-shot.mp3" id="3_ilh6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0okg"]
+size = Vector2(130, 80)
+
+[node name="gatling_bullet" type="Node2D"]
+scale = Vector2(0.6, 0.36)
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 2
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_j6mrw")
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8.9407e-08, 2.38419e-07)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_s0okg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+rotation = 1.5708
+texture = ExtResource("2_ilh6w")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Area2D"]
+stream = ExtResource("3_ilh6w")
+pitch_scale = 1.5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 16.327
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

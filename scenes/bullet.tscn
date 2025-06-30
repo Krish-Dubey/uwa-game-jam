@@ -11,7 +11,7 @@ z_index = 2
 scale = Vector2(1, 0.445)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_y25gk")
 

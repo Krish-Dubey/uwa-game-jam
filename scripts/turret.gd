@@ -41,6 +41,7 @@ func get_closest_enemy_in_range(range: float) -> Node2D:
 
 
 func shoot():
+	print("it shoots")
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = projectile_spawn_position.global_position
 	bullet.global_rotation = global_rotation

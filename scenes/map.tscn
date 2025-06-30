@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://1rryq0dileo8"]
+[gd_scene load_steps=55 format=4 uid="uid://1rryq0dileo8"]
 
 [ext_resource type="Texture2D" uid="uid://0p0em202ow2g" path="res://sprite/punyworld-overworld-tileset.png" id="1_2lpho"]
 [ext_resource type="PackedScene" uid="uid://srmb1vgmfku5" path="res://scenes/buildings/gatling_gun.tscn" id="2_nakos"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c2gfat4iqh5xk" path="res://scenes/buildings/ui_wall.tscn" id="9_mlgqr"]
 [ext_resource type="Script" uid="uid://47hdxw02w2yf" path="res://scenes/economy.gd" id="9_mo32q"]
 [ext_resource type="PackedScene" uid="uid://bvap245prb28r" path="res://scenes/buildings/ui_gatling_gun.tscn" id="10_mlgqr"]
+[ext_resource type="PackedScene" uid="uid://cdkn2uq7u1nx" path="res://scenes/game_over_screen.tscn" id="11_mkblt"]
 [ext_resource type="Script" uid="uid://pyre2w6xvvwv" path="res://scenes/enemy_container.gd" id="12_6k6j1"]
 [ext_resource type="Script" uid="uid://byluuxwk7m40e" path="res://scenes/building_info_ui.gd" id="12_mo32q"]
 [ext_resource type="PackedScene" uid="uid://bahpg4a8ojpee" path="res://scenes/buildings/ui_cannon.tscn" id="13_gw3fx"]
@@ -24,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://cqjuu8yn6hh26" path="res://scenes/buildings/ui_factory.tscn" id="17_mo32q"]
 [ext_resource type="PackedScene" uid="uid://bu0eksit6w4yt" path="res://scenes/buildings/ui_pollution_filter.tscn" id="19_m335s"]
 [ext_resource type="PackedScene" uid="uid://d16vdrilnng6j" path="res://scenes/buildings/ui_solar_panel.tscn" id="20_sq6bu"]
+[ext_resource type="AudioStream" uid="uid://bcdioo5f6b3kc" path="res://sound/Carefree.mp3" id="25_5u2yt"]
+[ext_resource type="AudioStream" uid="uid://b0vedwfy1mdkq" path="res://sound/monkey-noises.mp3" id="26_30iet"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c7s6e"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -1822,6 +1825,7 @@ collision_layer = 0
 collision_mask = 3
 script = ExtResource("3_jh32y")
 health_bar = NodePath("../../../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/HP Vbox Container2/PanelContainer2/ProgressBar")
+game_over_screen = ExtResource("11_mkblt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNode/EndPath/Area2D"]
 position = Vector2(-38.27, -0.5)
@@ -1861,6 +1865,9 @@ metadata/_custom_type_script = "uid://bimc0rfprmy7v"
 
 [node name="EnemyContainer" type="Node" parent="Spawn"]
 script = ExtResource("12_6k6j1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Spawn/EnemyContainer"]
+stream = ExtResource("26_30iet")
 
 [node name="PathUpdateTimer" type="Timer" parent="Spawn"]
 wait_time = 0.25
@@ -2309,6 +2316,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_sq6bu")
 layout_mode = 2
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("25_5u2yt")
+autoplay = true
+parameters/looping = true
 
 [connection signal="area_entered" from="PlayerNode/EndPath/Area2D" to="PlayerNode/EndPath/Area2D" method="_on_area_entered"]
 [connection signal="body_entered" from="PlayerNode/EndPath/Area2D" to="PlayerNode/EndPath/Area2D" method="_on_body_entered"]

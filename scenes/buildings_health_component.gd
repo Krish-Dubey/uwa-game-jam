@@ -11,7 +11,6 @@ func _ready() -> void:
 	health = max_health
 
 func take_damage(amount):
-	print("OIOIOI")
 	health -= amount
 	if health <= 0:
 		die()

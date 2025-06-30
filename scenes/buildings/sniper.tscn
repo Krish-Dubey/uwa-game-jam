@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0c2tn8jlwr3j" path="res://scenes/buildings/buildings_script.gd" id="1_4l32l"]
 [ext_resource type="Script" uid="uid://qfm11nxqsf5j" path="res://scripts/turret.gd" id="1_sj35t"]
-[ext_resource type="PackedScene" uid="uid://dsbks4nx3r4da" path="res://scenes/bullet.tscn" id="2_8hc4f"]
+[ext_resource type="PackedScene" uid="uid://drw01swsvjm8p" path="res://scenes/sniper_bullet.tscn" id="3_4l32l"]
 [ext_resource type="Texture2D" uid="uid://cxyq6ffrksruy" path="res://sprite/sniper/gun.png" id="3_032v5"]
 [ext_resource type="Texture2D" uid="uid://2nga6qau1ih8" path="res://sprite/platform.png" id="4_4l32l"]
 [ext_resource type="Texture2D" uid="uid://bkld4h5ouvumi" path="res://sprite/shadow.png" id="5_4gxho"]
@@ -26,9 +26,10 @@ pollution = 15.0
 position = Vector2(0, -10.935)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_sj35t")
-turret_range = 500.0
+turret_range = 99999.0
+fire_rate = 2.0
 pollution = 20.0
-bullet_scene = ExtResource("2_8hc4f")
+bullet_scene = ExtResource("3_4l32l")
 projectile_spawn_position = NodePath("ProjectileSpawnPosition")
 
 [node name="Sprite2D" type="Sprite2D" parent="Turret"]

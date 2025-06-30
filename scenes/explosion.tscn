@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://co84ct60gx8dm"]
+
+[ext_resource type="Script" uid="uid://b1ydd1lortqre" path="res://scenes/explosion.gd" id="1_nfeox"]
+[ext_resource type="PackedScene" uid="uid://7l86qcwa24sk" path="res://scenes/explosion_particle.tscn" id="2_aw4cw"]
+[ext_resource type="AudioStream" uid="uid://ls2mhx1pctuw" path="res://sound/explosion.mp3" id="3_aw4cw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3oo6d"]
+radius = 40.0125
+
+[node name="explosion" type="Node2D" node_paths=PackedStringArray("explosion_particle")]
+script = ExtResource("1_nfeox")
+explosion_particle = NodePath("GPUParticles2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3oo6d")
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("2_aw4cw")]
+lifetime = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_aw4cw")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
