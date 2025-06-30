@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://2mnohr3c7wvu"]
+[gd_scene load_steps=15 format=3 uid="uid://2mnohr3c7wvu"]
 
 [ext_resource type="Script" uid="uid://cs16ybkcd38bb" path="res://scripts/walkertest.gd" id="1_lytlq"]
 [ext_resource type="Texture2D" uid="uid://bd1vbmpn742wf" path="res://sprite/ant/tile000.png" id="1_ne3mj"]
@@ -49,7 +49,11 @@ size = Vector2(24.6154, 24.6154)
 [sub_resource type="CircleShape2D" id="CircleShape2D_jfybq"]
 radius = 17.0797
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lytlq"]
+
 [node name="ant" type="CharacterBody2D" node_paths=PackedStringArray("damage_timer")]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_lytlq")
 damage_timer = NodePath("Area2D2/Timer")
 movement_speed = 300.0
@@ -87,5 +91,9 @@ debug_color = Color(0.65427, 0.517664, 7.70092e-07, 0.42)
 
 [node name="Timer" type="Timer" parent="Area2D2"]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lytlq")
+
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
 [connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]
+[connection signal="timeout" from="Area2D2/Timer" to="." method="_on_timer_timeout"]

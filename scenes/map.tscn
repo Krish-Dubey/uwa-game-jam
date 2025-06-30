@@ -1956,6 +1956,35 @@ layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_styles/fill = SubResource("StyleBoxFlat_6ek7f")
 
+[node name="HP Vbox Container2" type="VBoxContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/HP Vbox Container2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4o3w1")
+
+[node name="Label" type="Label" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/HP Vbox Container2/PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Base Health Point"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/HP Vbox Container2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/HP Vbox Container2/PanelContainer2"]
+z_index = 1
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/HP Vbox Container2/PanelContainer2"]
+custom_minimum_size = Vector2(300, 27.405)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_styles/fill = SubResource("StyleBoxFlat_6ek7f")
+show_percentage = false
+
 [node name="BG Color" type="ColorRect" parent="UI/UI Top Left/PanelContainer"]
 z_index = -1
 layout_mode = 2
