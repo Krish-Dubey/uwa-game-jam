@@ -145,7 +145,7 @@ func _on_enemy_container_wave_end() -> void:
 		buttons.disabled = false
 	if currentWave % 5 == 0:
 		if PlayerEconomy.EnergyBar.value >= 100:
-			PlayerEconomy.EmerguQuotaLevel += 1
+			PlayerEconomy.EnergyQuotaLevel += 1
 			PlayerEconomy.EnergyBar.value = 0
 			PlayerEconomy.QuotaThreshold = PlayerEconomy.QuotaThreshold * 1.2
 			PlayerEconomy.CurrentPollution = 0
