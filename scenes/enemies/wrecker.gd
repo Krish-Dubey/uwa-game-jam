@@ -18,6 +18,8 @@ var target = null
 @export var damage_timer: Timer
 @export var movement_speed: float = 50
 @export var damage: int = 25
+@export var value: int = 1000
+@export var base_damage: int = 1000
 
 func _ready() -> void:
 	anim_sprite.speed_scale = movement_speed /8

@@ -101,7 +101,7 @@ texture = ExtResource("15_joydy")
 z_index = 3
 shape = SubResource("RectangleShape2D_rg5sd")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") groups=["buildings", "generators"] instance=ExtResource("17_2natp")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("17_2natp")]
 script = ExtResource("18_ptttb")
 agent = NodePath("..")
 tile_position = Vector2i(0, 0)

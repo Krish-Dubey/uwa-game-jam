@@ -17,7 +17,7 @@ var rng = RandomNumberGenerator.new()
 signal new_wave
 
 var currentWave = 0
-var currentBasePoints = 10
+var currentBasePoints = 5
 var enemy_list = []
 var common_enemy_list = []
 var enemy_wave = []
@@ -90,9 +90,13 @@ func create_wave():
 	var currentPoint = currentBasePoints + currentWave
 	wave_label.text = "Waves : " + str(currentWave)
 	var common_list = EnemyInfo.getCategory("common")
+	var boss_list = EnemyInfo.getCategory("boss")
+		
 	while currentPoint > 0:
 		enemy_wave.append(EnemyInfo.LoadedEnemies[rng.randi_range(0, EnemyInfo.LoadedEnemies.size() - 1)])
 		currentPoint -= 1
+		
+	
 	new_wave.emit()
 	next_wave_button.disabled = true
 	for buttons in buldings_button:

@@ -1826,10 +1826,12 @@ script = ExtResource("3_jh32y")
 position = Vector2(-38.27, -0.5)
 shape = SubResource("RectangleShape2D_urblq")
 
-[node name="PlayerEconomy" type="Node" parent="PlayerNode" node_paths=PackedStringArray("EnergyBar", "PollutionBar") groups=["PlayerEconomy"]]
+[node name="PlayerEconomy" type="Node" parent="PlayerNode" node_paths=PackedStringArray("EnergyBar", "PollutionBar", "EnergyText", "PollutionText") groups=["PlayerEconomy"]]
 script = ExtResource("9_mo32q")
 EnergyBar = NodePath("../../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container/PanelContainer2/ProgressBar")
 PollutionBar = NodePath("../../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container/PanelContainer2/ProgressBar")
+EnergyText = NodePath("../../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container/PanelContainer/Label")
+PollutionText = NodePath("../../UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container/PanelContainer/Label")
 
 [node name="Spawn" type="Marker2D" parent="." node_paths=PackedStringArray("EnemyInfo", "SpawnTimer", "PlayerEconomy", "EnemyContainer", "target", "road_tile_map_", "placement_tile", "wave_label", "next_wave_button", "buldings_button", "placement_script")]
 top_level = true
@@ -1922,7 +1924,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_30iet")
 
 [node name="Label" type="Label" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container/PanelContainer"]
 layout_mode = 2
-text = "Energy"
+text = "Energy Quota Level 1"
 horizontal_alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Energy Vbox Container"]
@@ -1944,7 +1946,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4o3w1")
 
 [node name="Label" type="Label" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container/PanelContainer"]
 layout_mode = 2
-text = "Pollution"
+text = "Pollution Level 1"
 horizontal_alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="UI/UI Top Left/PanelContainer/MarginContainer/HBoxContainer2/Pollution Vbox Container"]

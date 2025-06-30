@@ -44,10 +44,8 @@ radius = 6.32456
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_ootqy")
-movement_speed = null
-value = 200
-base_damage = null
 damage_timer = NodePath("Area2D2/Timer")
+value = 200
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -0.0349998)
@@ -60,7 +58,6 @@ shape = SubResource("RectangleShape2D_aecoq")
 debug_color = Color(0.968513, 0, 0.46738, 0.42)
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("8_cg1x7")]
-max_health = 100.0
 agent = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

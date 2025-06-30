@@ -13,32 +13,32 @@ var EnemiesList = [
 		"enemyName": "FastWalker",
 		"resourcePath": "res://scenes/enemies/fastwalker.tscn",
 		"cost" : 2,
-		"rarity" : "common"
+		"rarity" : "uncommon"
 	},
 	
 	{
 		"enemyName": "LargeWalker",
 		"resourcePath": "res://scenes/enemies/largewalker.tscn",
 		"cost" : 2,
-		"rarity" : "common"
+		"rarity" : "uncommon"
 	},
 	{
 		"enemyName": "Flyers",
 		"resourcePath": "res://scenes/enemies/flyers.tscn",
 		"cost" : 1,
-		"rarity" : "common"
+		"rarity" : "rare"
 	},
 	{
 		"enemyName": "Ant",
 		"resourcePath": "res://scenes/enemies/ant.tscn",
 		"cost" : 3,
-		"rarity" : "common"
+		"rarity" : "rare"
 	},
 	{
 		"enemyName": "Wrecker",
 		"resourcePath": "res://scenes/enemies/wrecker.tscn",
 		"cost" : 10,
-		"rarity" : "common"
+		"rarity" : "boss"
 	}
 	
 ]
@@ -46,7 +46,10 @@ var EnemiesList = [
 var LoadedEnemies = []
 
 var EnemiesCategoryIndex = {
-	"common" = []
+	"common" = [],
+	"uncommon" = [],
+	"rare" = [],
+	"boss" = []
 }
 
 func loadAllEnemies():
